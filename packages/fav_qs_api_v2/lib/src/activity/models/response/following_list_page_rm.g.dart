@@ -1,0 +1,27 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'following_list_page_rm.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+FollowingListPageRM _$FollowingListPageRMFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'FollowingListPageRM',
+      json,
+      ($checkedConvert) {
+        final val = FollowingListPageRM(
+          page: $checkedConvert('page', (v) => (v as num?)?.toInt()),
+          isLastPage: $checkedConvert('last_page', (v) => v as bool?),
+          following: $checkedConvert(
+              'following',
+              (v) => (v as List<dynamic>?)
+                  ?.map((e) =>
+                      FollowingItemRM.fromJson(e as Map<String, dynamic>))
+                  .toList()),
+        );
+        return val;
+      },
+      fieldKeyMap: const {'isLastPage': 'last_page'},
+    );

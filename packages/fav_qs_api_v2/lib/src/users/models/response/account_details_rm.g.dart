@@ -1,0 +1,26 @@
+// GENERATED CODE - DO NOT MODIFY BY HAND
+
+part of 'account_details_rm.dart';
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+AccountDetailsRM _$AccountDetailsRMFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'AccountDetailsRM',
+      json,
+      ($checkedConvert) {
+        final val = AccountDetailsRM(
+          email: $checkedConvert('email', (v) => v as String),
+          privateFavoritesCount: $checkedConvert(
+              'private_favorites_count', (v) => (v as num?)?.toInt()),
+          proExpiration: $checkedConvert('pro_expiration', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {
+        'privateFavoritesCount': 'private_favorites_count',
+        'proExpiration': 'pro_expiration'
+      },
+    );
