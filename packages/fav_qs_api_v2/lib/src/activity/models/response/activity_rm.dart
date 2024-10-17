@@ -21,7 +21,7 @@ class ActivityRM {
 
   @JsonKey(name: 'owner_type')
   final String? ownerType;
-  
+
   @JsonKey(name: 'owner_Id')
   final String? ownerId;
 

@@ -1,0 +1,14 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+TagRM _$TagRMFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'TagRM',
+      json,
+      ($checkedConvert) {
+        final val = TagRM(
+          tag: $checkedConvert('tag', (v) => v as String?),
+        );
+        return val;
+      },
+    );

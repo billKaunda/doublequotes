@@ -1,0 +1,13 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Map<String, dynamic> _$UserDetailsRequestRMToJson(
+        UserDetailsRequestRM instance) =>
+    <String, dynamic>{
+      'favorite': instance.isFavorite,
+      'upvote': instance.isUpvoted,
+      'downvote': instance.isDownvoted,
+      'hidden': instance.isHidden,
+      'personal_tags': instance.personalTags,
+    };

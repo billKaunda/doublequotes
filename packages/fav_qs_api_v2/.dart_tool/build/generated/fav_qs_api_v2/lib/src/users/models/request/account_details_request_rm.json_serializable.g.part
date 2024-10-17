@@ -1,0 +1,11 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Map<String, dynamic> _$AccountDetailsRequestRMToJson(
+        AccountDetailsRequestRM instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'private_favorites_count': instance.privateFavoritesCount,
+      'pro_expiration': instance.proExpiration,
+    };

@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import './author_rm.dart';
-import './tag_rm.dart';
-import './user_rm.dart';
+import './filter_details_rm.dart';
 
 part 'typeahead_rm.g.dart';
 
@@ -14,13 +12,13 @@ class TypeaheadRM {
   });
 
   @JsonKey(name: 'authors')
-  final List<AuthorRM>? authors;
+  final List<FilterDetailsRM>? authors;
 
   @JsonKey(name: 'tags')
-  final List<TagRM>? tags;
+  final List<FilterDetailsRM>? tags;
 
   @JsonKey(name: 'users')
-  final List<UserRM>? users;
+  final List<FilterDetailsRM>? users;
 
   static const fromJson = _$TypeaheadRMFromJson;
 }

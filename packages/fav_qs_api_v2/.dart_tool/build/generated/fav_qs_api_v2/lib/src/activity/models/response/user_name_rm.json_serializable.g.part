@@ -1,0 +1,14 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+UserNameRM _$UserNameRMFromJson(Map<String, dynamic> json) => $checkedCreate(
+      'UserNameRM',
+      json,
+      ($checkedConvert) {
+        final val = UserNameRM(
+          name: $checkedConvert('name', (v) => v as String),
+        );
+        return val;
+      },
+    );
