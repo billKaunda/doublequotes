@@ -35,7 +35,7 @@ extension DioExtensions on Dio {
 
     //Signing a user up or in doesn't require User-Token field in the
     // request body. But, getting a user requires a session token
-    bool pathForSessionAndPasswordRetrievalOps(String url) {
+    bool urlForSessionAndPasswordRetrievalOps(String url) {
       return [
         '$_baseUrl/session',
         '$_baseUrl/users',
@@ -58,15 +58,15 @@ extension DioExtensions on Dio {
       InterceptorsWrapper(
         onRequest: (options, handler) async {
           if ((httpMethodRequiresUserSession(options.method) &&
-                  !pathForSessionAndPasswordRetrievalOps(options.path)) ||
+                  !urlForSessionAndPasswordRetrievalOps(options.baseUrl)) ||
               // logging out a user requires a user session
               (options.method.toUpperCase() == 'DELETE' &&
-                  (options.path.toLowerCase() == '$_baseUrl/session/')) ||
+                  (options.baseUrl.toLowerCase() == '$_baseUrl/session/')) ||
               //handle getting or updating a user, which a requires
               //a user session
               (((options.method.toUpperCase() == 'GET' ||
                       options.method.toUpperCase() == 'PUT')) &&
-                  (options.path.toLowerCase() == '$_baseUrl/users/:login')) ||
+                  (options.baseUrl.toLowerCase() == '$_baseUrl/users/:login')) ||
               (options.method.toUpperCase() == 'GET' &&
                   queryParamRequiresUserSession(options.queryParameters))) {
             String? userSessionToken = await userSessionTokenSupplier?.call();
