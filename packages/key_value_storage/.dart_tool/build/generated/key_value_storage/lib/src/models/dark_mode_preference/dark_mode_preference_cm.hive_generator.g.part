@@ -1,0 +1,47 @@
+// **************************************************************************
+// TypeAdapterGenerator
+// **************************************************************************
+
+class DarkModePreferenceCMAdapter extends TypeAdapter<DarkModePreferenceCM> {
+  @override
+  final int typeId = 6;
+
+  @override
+  DarkModePreferenceCM read(BinaryReader reader) {
+    switch (reader.readByte()) {
+      case 0:
+        return DarkModePreferenceCM.dark;
+      case 1:
+        return DarkModePreferenceCM.light;
+      case 2:
+        return DarkModePreferenceCM.accordingToSystemSettings;
+      default:
+        return DarkModePreferenceCM.dark;
+    }
+  }
+
+  @override
+  void write(BinaryWriter writer, DarkModePreferenceCM obj) {
+    switch (obj) {
+      case DarkModePreferenceCM.dark:
+        writer.writeByte(0);
+        break;
+      case DarkModePreferenceCM.light:
+        writer.writeByte(1);
+        break;
+      case DarkModePreferenceCM.accordingToSystemSettings:
+        writer.writeByte(2);
+        break;
+    }
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is DarkModePreferenceCMAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
