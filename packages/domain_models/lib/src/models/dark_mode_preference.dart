@@ -1,0 +1,1 @@
+enum DarkModePreference {dark, light, accordingToSystemSettings}
