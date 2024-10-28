@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_local_storage/hive_local_storage.dart';
 import 'following_item_cm.dart';
 
 part 'following_list_page_cm.g.dart';

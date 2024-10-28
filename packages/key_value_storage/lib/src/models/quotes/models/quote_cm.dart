@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_local_storage/hive_local_storage.dart';
 import './user_details_cm.dart';
 import './dialogue_lines_cm.dart';
 

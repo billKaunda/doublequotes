@@ -1,4 +1,4 @@
-import 'package:hive/hive.dart';
+import 'package:hive_local_storage/hive_local_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -11,7 +11,7 @@ class DarkModePrefKVStorage {
     @visibleForTesting HiveInterface? hive,
   }) : _hive = hive ?? Hive {
     try {
-      _hive..registerAdapter(DarkModePreferenceCMAdapter());
+      _hive.registerAdapter(DarkModePreferenceCMAdapter());
     } catch (_) {
       throw Exception(
           'Avoid having more than one [DarkModePrefKeyValueStorage] '
