@@ -1,0 +1,35 @@
+{
+    "@@locale" : "en",
+    "dialogTitle": "Forgot My Password",
+    "@dialogTitle" : {
+        "description": "Title of dialog where users can request a password reset."
+    },
+    "emailTextFieldLabel": "Email",
+    "@emailTextFieldLabel": {
+        "description": "Label for the email input field in the password reset dialog."
+    },
+    "emailTextFieldEmptyErrorMessage" : "Your email can't be empty.",
+    "@emailTextFieldEmptyErrorMessage" : {
+        "description": "Error message displayed when the email field is left empty."
+    },
+    "emailTextFieldInvalidErrorMessage" : "This email is not valid.",
+    "@emailTextFieldInvalidErrorMessage": {
+        "description": "Error message displayed when the email format is invalid."
+    },
+    "emailRequestSuccessMessage" : "If you have registered your email with us, a link will be sent to you with instructions on how to reset your password.",
+    "@emailRequestSuccessMessage": {
+        "description": "Message shown to users when a password reset link is successfully requested"
+    },
+    "confirmButtonLabel" : "Confirm",
+    "@confirmButtonLabel": {
+        "description": "Label for the confirmation button to submit the password reset request."
+    },
+    "cancelButtonLabel" : "Cancel",
+    "@cancelButtonLabel": {
+        "description": "Label for the button to cancel password reset dialog box."
+    },
+    "errorMessage" : "An error occured. Please, check your internet connection.",
+    "@errorMessage": {
+        "description": "General error shown when there is a network or any other error."
+    }
+}
