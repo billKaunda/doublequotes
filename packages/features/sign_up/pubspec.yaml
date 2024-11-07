@@ -1,0 +1,24 @@
+name: sign_up
+publish_to: none
+
+environment:
+  sdk: ^3.6.0-216.1.beta
+
+dependencies:
+  doublequotes:
+    path: ../../../
+  component_library:
+    path: ../../component_library
+  domain_models:
+    path: ../../domain_models
+  user_repository:
+    path: ../../user_repository
+  form_fields:
+    path: ../../form_fields
+  
+
+
+dev_dependencies:
+
+flutter:
+  uses-material-design: true

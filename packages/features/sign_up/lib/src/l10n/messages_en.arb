@@ -1,0 +1,71 @@
+{
+    "@@locale" : "en",
+    "invalidCredentialsErrorMessage" : "Invalid email and/or password.",
+    "@invalidCredentialsErrorMessage" : {
+        "description": "Error message shown to the user if the email and/or password provided are invalid."
+    },
+    "appBarTitle" : "Sign Up",
+    "@appBarTitle" : {
+        "description": "Title of the app bar where users can sign up."
+    },
+    "signUpButtonLabel" : "Sign Up",
+    "@signUpButtonLabel" : {
+        "description": "Label for the button to request for a user sign up."
+    },
+    "usernameTextFieldLabel" : "Username",
+    "@usernameTextFieldLabel" : {
+        "description": "Label for the username input field during a sign up form filling."
+    },
+    "usernameTextFieldEmptyErrorMessage" : "Your username can't be empty",
+    "@usernameTextFieldEmptyErrorMessage": {
+        "description": "Error message displayed to the user if the username field has been left empty."
+    },
+    "usernameTextFieldInvalidErrorMessage" : "Username can only be 1-20 characters long, and can contain letters, numbers, and the underscore only.",
+    "@usernameTextFieldInvalidErrorMessage": {
+        "description": "Error message show to the user when the username format is invalid."
+    },
+    "usernameTextFieldAlreadyTakenErrorMessage" : "This username is already taken.",
+    "@usernameTextFieldAlreadyTakenErrorMessage" : {
+        "description": "Error shown to the aspiring user if the username entered already exists in FavQs.com"
+    },
+    "emailTextFieldLabel" : "Email",
+    "@emailTextFieldLabel" : {
+        "description": "Label for the email input field during a sign up form filling session."
+    },
+    "emailTextFieldEmptyErrorMessage" : "Your email can't be empty.",
+    "@emailTextFieldEmptyErrorMessage" : { 
+        "description": "Error message given when the email input field has been left empty."
+    },
+    "emailTextFieldInvalidErrorMessage" : "This email address is not valid.",
+    "@emailTextFieldInvalidErrorMessage" : {
+        "description": "Error message shown when the email entered has an invalid format."
+    },
+    "emailTextFieldAlreadyRegisteredErrorMessage" : "Sorry, this email is already registered with us.",
+    "@emailTextFieldAlreadyRegisteredErrorMessage": {
+        "description": "Error message displayed when the email provided already exists in FavQs.com"
+    },
+    "passwordTextFieldLabel" : "Password",
+    "@passwordTextFieldLabel" : {
+        "description": "Label for password input field during a sign up form filling."
+    },
+    "passwordTextFieldEmptyErrorMessage" : "Your password can't be empty.",
+    "@passwordTextFieldEmptyErrorMessage":{
+        "description": "Error message given when the password input field has been left empty."
+    }, 
+    "passwordTextFieldInvalidErrorMessage" : "Password must be at least 5 characters long.",
+    "@passwordTextFieldInvalidErrorMessage" : {
+        "description": "Error message shown when the password entered has an invalid format."
+    },
+    "passwordConfirmationTextFieldLabel" : "Password Confirmation",
+    "@passwordConfirmationTextFieldLabel" :{
+        "description": "Label for password confirmation input field during a sign up form filling session."
+    },
+    "passwordConfirmationTextFieldEmptyErrorMessage" : "This field can't be emtpy.",
+    "@passwordConfirmationTextFieldEmptyErrorMessage":{
+        "description": "Error message given when the password confirmation input field has been left empty."
+    },
+    "passwordConfirmationTextFieldInvalidErrorMessage" : "Your password don't match.",
+    "@passwordConfirmationTextFieldInvalidErrorMessage": {
+        "description": "Error message shown when the password entered in the password confirmation field has an invalid format or doesn't match the one in password field."
+    }
+}
