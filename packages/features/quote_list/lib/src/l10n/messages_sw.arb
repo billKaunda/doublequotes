@@ -1,0 +1,14 @@
+{
+    "@@locale":"sw",
+    "quoteListRefreshErrorMessage" : "Hatukuweza kuonyesha upya vipengee vyako.\nTafadhali angalia muunganisho wako wa mtandao kisha ujaribu tena.",
+    "favoritesChoiceChipLabel" : "Vipendwa",
+    "authorChoiceChipLabel" : "Mwandishi",
+    "tagChoiceChipLabel": "Tagi",
+    "hiddenChoiceChipLabel" : "Zilizofichwa",
+    "privateChoiceChipLabel" : "Za kibinafsi",
+    "noQuoteBodyErrorMessage": "Hakuna mwili wa nukuu uliopatikana",
+    "firstPageFetchErrorMessageTitle": "Hitilafu ya Kuleta Ukurasa wa Kwanza",
+    "firstPageFetchErrorMessageBody": "Hitilafu katika kupakia ukurasa wa kwanza. Tafadhali, jaribu tena",
+    "proUserRequiredErrorMessage": "Pata toleo jipya la Pro"
+
+}

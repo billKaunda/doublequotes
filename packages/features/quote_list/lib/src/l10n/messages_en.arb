@@ -1,0 +1,44 @@
+{
+    "@@locale":"en",
+    "quoteListRefreshErrorMessage" : "We couldn't refresh your items.\nPlease check your internet connectivity and then try again.",
+    "@quoteListRefreshErrorMessage":{
+        "description": "Error message displayed when quote list cannot be refreshed."
+    },
+    "favoritesChoiceChipLabel" : "Favorites",
+    "@favoritesChoiceChipLabel":{
+        "description": "Label for choice chip used to filter quotes by the user's favorites."
+    },
+    "authorChoiceChipLabel" : "Author",
+    "@authorChoiceChipLabel": {
+        "description": "Label of the choice chip to enable a user filter the quote list page by author."
+    },
+    "tagChoiceChipLabel": "Tag",
+    "@tagChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the quote list page by tag"
+    },
+    "hiddenChoiceChipLabel" : "Hidden",
+    "@hiddenChoiceChipLabel":{
+        "description": "Label for choice chip used to filter quotes hidden by the user."
+    },
+    "privateChoiceChipLabel" : "Private",
+    "@privateChoiceChipLabel":{
+        "description": "Label for choice chip used to filter quote list page by the user's private quotes."
+    },
+    "noQuoteBodyErrorMessage": "No Quote Body Found",
+    "@noQuoteBodyErrorMessage":{
+        "description": "Error message displayed if a quote doesn't have a body."
+    },
+    "firstPageFetchErrorMessageTitle": "First Page Fetch Error",
+    "@firstPageFetchErrorMessageTitle":{
+        "description": "Title of exception indicator displayed when there is an error loading the first page."
+    },
+    "firstPageFetchErrorMessageBody": "Error loading the first page. Please, tap Try Again",
+    "@firstPageFetchErrorMessageBody":{
+        "description": "Message body of the exception indicator displayed when loading the first page."
+    },
+    "proUserRequiredErrorMessage": "Upgrade to Pro",
+    "@proUserRequiredErrorMessage":{
+        "description": "Error message displayed when requested action on a quote can only be performed by a pro user."
+    }
+    
+}
