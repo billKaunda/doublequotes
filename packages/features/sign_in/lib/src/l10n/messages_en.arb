@@ -1,0 +1,67 @@
+{
+    "@@locale" : "en",
+    "invalidCredentialsErrorMessage" : "Invalid email and/or password.",
+    "@invalidCredentialsErrorMessage": {
+        "description": "Error message shown to the user if the email and/or password provided are invalid."
+    },
+    "inactiveUsernameErrorMessage": "Username is not active. Contact support@favqs.com",
+    "@inactiveUsernameErrorMessage":{
+        "description": "Error message displayed if the user's account is not active."
+    },
+    "missingCredentialsErrorMessage": "Username or password is missing",
+    "@missingCredentialsErrorMessage":{
+        "description": "Error message shown when the username or password field is missing during submission."
+    },
+    "sessionNotFoundErrorMessage": "User session not found",
+    "@sessionNotFoundErrorMessage":{
+        "description": "Error message given when a user session is missing in FavQs.com"
+    },
+    "userNotFoundErrorMessage": "User not found",
+    "@userNotFoundErrorMessage":{
+        "description": "Error message displayed when a user is cannot be retrieved from FavQs.com"
+    },
+    "appBarTitle" : "Sign In",
+    "@appBarTitle":{
+        "description": "Title of the appBar where a user can sign in."
+    },
+    "emailTextFieldLabel" : "Email",
+    "@emailTextFieldLabel":{
+        "description": "Lable of the email address input field."
+    },
+    "emailTextFieldEmptyErrorMessage" : "Your email can't be empty.",
+    "@emailTextFieldEmptyErrorMessage": {
+        "description": "Error message given when the email input field has been left empty."
+    },
+    "emailTextFieldInvalidErrorMessage" : "This email is not valid.",
+    "@emailTextFieldInvalidErrorMessage":{
+        "description": "Error message shown when the email entered has an invalid format."
+    },
+    "passwordTextFieldLabel" : "Password",
+    "@passwordTextFieldLabel":{
+        "description": "Label for password input field during a sign in form filling."
+    },
+    "passwordTextFieldEmptyErrorMessage" : "Your password can't be empty.",
+    "@passwordTextFieldEmptyErrorMessage":{
+        "description": "Error message given when the password input field has been left empty."
+    },
+    "passwordTextFieldInvalidErrorMessage" : "Password must be at least 5 characters long.",
+    "@passwordTextFieldInvalidErrorMessage":{
+        "description": "Error message shown when the password entered has an invalid format."
+    },
+    "forgotMyPasswordButtonLabel" : "Forgot my password",
+    "@forgotMyPasswordButtonLabel":{
+        "description": "Label for the forgot password button which a user can tap to retrieve his password."
+    },
+    "signInButtonLabel" : "Sign in",
+    "@signInButtonLabel":{
+        "description": "Label for the sign in button which a user taps to sign into the app."
+    },
+    "signUpOpeningText" : "Don't have an account? Click here",
+    "@signUpOpeningText":{
+        "description": "A text message that asks the user if he has an account or not."
+    },
+    "signUpButtonLabel" : "Sign Up",
+    "@signUpButtonLabel":{
+        "description": "Label for the sign up button that a visitor can tap to open an account in FavQs.com"
+    }
+}

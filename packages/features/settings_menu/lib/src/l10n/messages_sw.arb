@@ -1,0 +1,33 @@
+{
+    "@@locale": "sw",
+    "themeSettingsTileLabel" : "Mipangilio ya Mandhari",
+    "defaultThemeTileLabel": "Chaguo-msingi",
+    "themeFromMyWallpaperTileLabel": "Imehamasishwa na picha wa ukuta wangu",
+    "languageListTileLabel": "Lugha",
+    "languagePrefSimpleDialogTitle": "Lugha",
+    "englishOptionTileLabel": "Kiingereza",
+    "swahiliOptionTileLabel": "Kiswahili",
+    "darkModePreferencesListTileLabel": "Upendeleo wa Hali ya Giza",
+    "darkModePrefSimpleDialogTitle": "Upendeleo wa Hali ya Giza",
+    "highContrastDarkOptionLabel": "Tofauti ya Juu Giza",
+    "darkOptionTileLabel" : "Giza",
+    "lightOptionTileLabel" : "Nuru",
+    "highContrastLightOptionTileLabel": "Nuru ya Tofauti ya Juu",
+    "useSystemSettingsOptionTileLabel" : "Tumia Mipangilio ya Mfumo",
+    "languageTileLabel": "Lugha",
+    "englishLanguageOptionLabel": "English",
+    "swahiliLanguageOptionLabel": "Kiswahili",
+    "signInButtonLabel" : "Weka sahihi",
+    "signUpOpeningText" : "Je, huna akaunti? Bonyeza hapa.",
+    "signUpButtonLabel" : "Jisajili",
+    "signedInUserGreeting": "Hi {username}",
+    "@signedInUserGreeting":{
+        "placeholders": {
+            "username":{
+                "type": "String"
+            }
+        }
+    },
+    "signOutButtonLabel": "Ondoka"
+
+}

@@ -1,0 +1,11 @@
+arb-dir: lib/src/l10n
+template-arb-file: messages_en.arb
+output-localization-file: settings_menu_localizations.dart
+output-class: SettingsMenuLocalizations
+preferred-supported-locales:
+  - "en"
+  - "sw"
+project-dir: ../../../
+synthetic-package: false
+nullable-getter: false
+untranslated-messages-file: settings_menu_untranslated.dart

@@ -1,0 +1,98 @@
+{
+    "@@locale": "en",
+    "themeSettingsTileLabel" : "Theme Settings",
+    "@themeSettingsTileLabel":{
+        "description": "Label for the tile which a user can tap to change theme settings for the app."
+    },
+    "defaultThemeTileLabel": "Default",
+    "@defaultThemeTileLabel":{
+        "description": "Label for the tile to select the app's default theme settings."
+    },
+    "themeFromMyWallpaperTileLabel": "Inspired by my wallpaper",
+    "@themeFromMyWallpaperTileLabel":{
+        "description": "Label for the tile to select theme as determined from the user's wallpaper."
+    },
+    "languageListTileLabel": "Language",
+    "@languageListTileLabel":{
+        "description": "Label of the list tile that allows a user to select his preffered language."
+    },
+    "languagePrefSimpleDialogTitle": "Language",
+    "@languagePrefSimpleDialogTitle":{
+        "description": "Title of the simple dialog box that allows a user to choose his preferred language."
+    },
+    "englishOptionTileLabel": "English",
+    "@englishOptionTileLabel":{
+        "description": "Label of the tile to select English language."
+    },
+    "swahiliOptionTileLabel": "Swahili",
+    "@swahiliOptionTileLabel":{
+        "description": "Label of the tile to select Swahili language."
+    },
+    "darkModePreferencesListTileLabel": "Dark Mode Preference",
+    "@darkModePreferencesListTileLabel":{
+        "description": "Label of the list tile that allows a user to select his preffered dark mode settings."
+    },
+    "darkModePrefSimpleDialogTitle": "Dark Mode Preference",
+    "@darkModePrefSimpleDialogTitle":{
+        "description": "Title of the simple dialog box that allows a user to choose his dark mode preference."
+    },
+    "highContrastDarkOptionLabel": "High Contrast Dark",
+    "@highContrastDarkOptionLabel": {
+        "description": "Label for the high contrast dark mode preference"
+    },
+    "darkOptionTileLabel" : "Dark",
+    "@darkOptionTileLabel":{
+        "description": "Label for dark mode preference tile"
+    },
+    "lightOptionTileLabel" : "Light",
+    "@lightOptionTileLabel":{
+        "description": "Label for light mode preference tile"
+    },
+    "highContrastLightOptionTileLabel": "High Contrast Light",
+    "@highContrastLightOptionTileLabel":{
+        "description": "Label for high contrast light mode preference tile"
+    },
+    "useSystemSettingsOptionTileLabel" : "Use System Settings",
+    "@useSystemSettingsOptionTileLabel":{
+        "description": "Label for setting the dark mode preference according to the system settings."
+    },
+    "languageTileLabel": "Language",
+    "@languageTileLabel":{
+        "description": "Label for the tile a user can tap to select his preferred language of choice."
+    },
+    "englishLanguageOptionLabel": "English",
+    "@englishLanguageOptionLabel":{
+        "description": "Label for English language choice"
+    },
+    "swahiliLanguageOptionLabel": "Kiswahili",
+    "@swahiliLanguageOptionLabel":{
+        "description": "Label for Swahili language choice"
+    },
+    "signInButtonLabel" : "Sign in",
+    "@signInButtonLabel":{
+        "description": "Label for the sign in button which a user taps to sign into the app."
+    },
+    "signUpOpeningText": "Don't have an account?",
+    "@signUpOpeningText":{
+        "description": "Sign up text that prompts the user if he has an account in FavQs.com"
+    },
+    "signUpButtonLabel" : "Sign Up",
+    "@signUpButtonLabel":{
+        "description": "Label for the sign up button which a visitor taps to sign up."
+    },
+    "signedInUserGreeting": "Hi {username}",
+    "@signedInUserGreeting":{
+        "placeholders": {
+            "username":{
+                "type": "String",
+                "example": "friend"
+            }
+        },
+        "description": "Greeting message that displayed to a signed in user."
+    },
+    "signOutButtonLabel": "Sign Out",
+    "@signOutButtonLabel":{
+        "description": "Label for the sign out button which a user taps to terminate his session."
+    }
+    
+}

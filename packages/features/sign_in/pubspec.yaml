@@ -1,0 +1,23 @@
+name: sign_in
+publish_to: none
+
+environment:
+  sdk: ^3.6.0-216.1.beta
+
+dependencies:
+  doublequotes:
+    path: ../../../
+  component_library:
+    path: ../../component_library
+  user_repository:
+    path: ../../user_repository
+  domain_models:
+    path: ../../domain_models
+  form_fields:
+    path: ../../form_fields
+
+
+dev_dependencies:
+
+flutter:
+  uses-material-design: true
