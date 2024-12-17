@@ -1,0 +1,67 @@
+{
+    "@@locale" : "en",
+    "downvoteIconButtonTooltip" : "Unlike",
+    "@downvoteIconButtonTooltip" :{
+        "description": "Tooltip for the icon button if the user doesn't like the selected quote."
+    },
+    "upvoteIconButtonTooltip" : "Like",
+    "@upvoteIconButtonTooltip":{
+        "description": "Tooltip for the icon button if a user want to upvote a quote."
+    },
+    "searchBarHintText" : "journey",
+    "@searchBarHintText":{
+        "description": "Placeholder for the seach bar hint text."
+    },
+    "searchBarLabelText" : "Search",
+    "@searchBarLabelText":{
+        "description": "Label text for the input field where a user can enter filter arguments to perform a search."
+    },
+    "shareIconButtonTooltip" : "Share",
+    "@shareIconButtonTooltip":{
+        "description": "Tooltip for the button which allows a user to share a given quote to other apps."
+    },
+    "favoriteIconButtonTooltip" : "Favorite",
+    "@favoriteIconButtonTooltip":{
+        "description": "Tooltip for the button which marks a quote as favorite by a given user."
+    },
+    "deleteIconButtonTooltip":"Delete",
+    "@deleteIconButtonTooltip":{
+        "description": "Tooltip for the button to delete the selected quote"
+    },
+    "editPicSourceIconButtonTooltip":"Change Picture",
+    "@editPicSourceIconButtonTooltip":{
+        "description": "Tooltip for the button to update the profile picture source."
+    },
+    "hideIconButtonTooltip":"Hide",
+    "@hideIconButtonTooltip":{
+        "description": "Tooltip for the button to hide the selected quote"
+    },
+    "exceptionIndicatorGenericTitle" : "Sorry, something went wrong",
+    "@exceptionIndicatorGenericTitle":{
+        "description": "Title of the exception indicator displayed when trying to fetch quote details."
+    },
+    "exceptionIndicatorTryAgainButton" : "Try Again",
+    "@exceptionIndicatorTryAgainButton":{
+        "description": "Label for the try again button of the exception indicator."
+    },
+    "exceptionIndicatorGenericMessage" : "There has been an error.\nPlease, check your internet connection and then try again.",
+    "@exceptionIndicatorGenericMessage":{
+        "description": "Error messsage displayed when something goes wrong when trying to fetch quote detials."
+    },
+    "genericErrorSnackBarMessage" : "An error occured. Please, check you internet connection.",
+    "@genericErrorSnackBarMessage":{
+        "description": "Generic Error message given in the snackbar."
+    },
+    "authenticationRequiredErrorSnackBarMessage" : "To perform this action, kindly sign in.",
+    "@authenticationRequiredErrorSnackBarMessage":{
+        "description": "Error message requiring the user to sign in in order to proceed with the given request."
+    },
+    "signInButtonLabel" : "Sign In",
+    "@signInButtonLabel":{
+        "description": "Label for the sign in button which a user taps to sign into the app."
+    },
+    "signOutButtonLabel" : "Sign Out",
+    "@signOutButtonLabel":{
+        "description": "Label for the sign out button that a user can tap to end his session in FavQs.com"
+    }
+}

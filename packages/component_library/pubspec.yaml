@@ -1,0 +1,32 @@
+name: component_library
+publish_to: none
+
+environment:
+  sdk: ^3.6.0-334.4.beta
+
+dependencies:
+  flutter:
+    sdk: flutter
+  auto_size_text: ^3.0.0
+  flutter_svg: ^2.0.10+1
+  material_color_utilities: ^0.11.1
+  doublequotes:
+    path: ../../
+
+    
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^5.1.0
+
+
+flutter:
+  generate: true
+  assets:
+    - assets/
+  
+  fonts:
+    - family: Fondamento
+      fonts:
+        - asset: assets/Fondamento-Regular.ttf
+        - asset: assets/Fondamento-Italic.ttf
