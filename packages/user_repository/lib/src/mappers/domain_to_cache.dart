@@ -18,10 +18,24 @@ extension DarkModePreferenceDomainToCM on DarkModePreference {
   }
 }
 
-extension ThemeModePreferenceDomainToCM on ThemeModePreference {
-  ThemeModePreferenceCM toCacheModel() {
-    return ThemeModePreferenceCM(
-      preference: preference.toCacheModel(),
-    );
+extension ThemeSourcePreferenceDomainToCM on ThemeSourcePreference {
+  ThemeSourcePreferenceCM toCacheModel() {
+    switch (this) {
+      case ThemeSourcePreference.defaultTheme:
+        return ThemeSourcePreferenceCM.defaultTheme;
+      case ThemeSourcePreference.fromWallpaper:
+        return ThemeSourcePreferenceCM.fromWallpaper;
+    }
+  }
+}
+
+extension LanguagePreferenceDomainToCM on LanguagePreference {
+  LanguagePreferenceCM toCacheModel() {
+    switch (this) {
+      case LanguagePreference.english:
+        return LanguagePreferenceCM.english;
+      case LanguagePreference.swahili:
+        return LanguagePreferenceCM.swahili;
+    }
   }
 }

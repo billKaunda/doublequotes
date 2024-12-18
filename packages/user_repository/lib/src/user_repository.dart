@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:rxdart/rxdart.dart';
 import 'package:meta/meta.dart';
 import 'package:fav_qs_api_v2/fav_qs_api_v2.dart';
@@ -29,23 +31,65 @@ class UserRepository {
   final TypeaheadApiSection remoteTypeaheadApi;
   final UserLocalStorage _localStorage;
   final UserSecureStorage _secureStorage;
+  final BehaviorSubject<UserCredentials?> _userCredentialsSubject =
+      BehaviorSubject();
+  final BehaviorSubject<UpdateUser?> _updateUserSubject = BehaviorSubject();
   final BehaviorSubject<User?> _userSubject = BehaviorSubject();
-  final BehaviorSubject<ThemeModePreference> _themeModePreferenceSubject =
+  final BehaviorSubject<ThemeSourcePreference> _themeSourcePreferenceSubject =
+      BehaviorSubject();
+  final BehaviorSubject<LanguagePreference> _languagePreferenceSubject =
+      BehaviorSubject();
+  final BehaviorSubject<DarkModePreference> _darkModePreferenceSubject =
       BehaviorSubject();
 
-  Future<void> upsertThemeModePreference(ThemeModePreference theme) async {
-    await _localStorage.upsertThemeModePreference(theme.toCacheModel());
-    _themeModePreferenceSubject.add(theme);
+  Future<void> upsertThemeSourcePreference(
+      ThemeSourcePreference themePref) async {
+    await _localStorage.upsertThemeSourcePreference(themePref.toCacheModel());
+    _themeSourcePreferenceSubject.add(themePref);
   }
 
-  Stream<ThemeModePreference> getThemeModePreference() async* {
-    if (!_themeModePreferenceSubject.hasValue) {
-      final storedPreference = await _localStorage.getThemeModePreference();
-      //TODO add double nullcheck to _themeModePreferenceSubject of this method
-      _themeModePreferenceSubject.add(storedPreference!.toDomainModel());
+  Stream<ThemeSourcePreference> getThemeSourcePreference() async* {
+    if (!_themeSourcePreferenceSubject.hasValue) {
+      final storedPreference = await _localStorage.getThemeSourcePreference();
+      _themeSourcePreferenceSubject.add(
+        storedPreference?.toDomainModel() ?? ThemeSourcePreference.defaultTheme,
+      );
     }
 
-    yield* _themeModePreferenceSubject.stream;
+    yield* _themeSourcePreferenceSubject.stream;
+  }
+
+  Future<void> upsertLanguagePreference(LanguagePreference language) async {
+    await _localStorage.upsertLanguagePreference(language.toCacheModel());
+    _languagePreferenceSubject.add(language);
+  }
+
+  Stream<LanguagePreference> getLanguagePreference() async* {
+    if (!_languagePreferenceSubject.hasValue) {
+      final storedPreference = await _localStorage.getLanguagePreference();
+      _languagePreferenceSubject.add(
+        storedPreference?.toDomainModel() ?? LanguagePreference.english,
+      );
+    }
+
+    yield* _languagePreferenceSubject.stream;
+  }
+
+  Future<void> upsertDarkModePreference(DarkModePreference darkModePref) async {
+    await _localStorage.upsertdarkModePreference(darkModePref.toCacheModel());
+    _darkModePreferenceSubject.add(darkModePref);
+  }
+
+  Stream<DarkModePreference> getDarkModePreference() async* {
+    if (!_darkModePreferenceSubject.hasValue) {
+      final storedPreference = await _localStorage.getDarkModePreference();
+      _darkModePreferenceSubject.add(
+        storedPreference?.toDomainModel() ??
+            DarkModePreference.accordingToSystemSettings,
+      );
+    }
+
+    yield* _darkModePreferenceSubject.stream;
   }
 
   Future<Typeahead?> getTypeahead() async {
@@ -87,12 +131,12 @@ class UserRepository {
       );
 
       // Use a mapper function, toDomainModel(), to convert the
-      //sessionApiUser object from UserRM type to the User type.
+      //sessionApiUser object from UserRM type to the UserCredentials type.
       final domainUser = sessionApiUser.toDomainModel();
 
       //Replaced- or added, if this is the first sign-in- a new value
       // to the BehaviourSubject.
-      _userSubject.add(domainUser);
+      _userCredentialsSubject.add(domainUser);
     } catch (e) {
       switch (e) {
         /*
@@ -120,15 +164,15 @@ class UserRepository {
     try {
       await remoteSessionApi.signOut();
       await _secureStorage.deleteUserInfo();
-      _userSubject.add(null);
+      _userCredentialsSubject.add(null);
     } on UserSessionNotFoundFavQsException catch (_) {
       throw UserSessionNotFound();
     }
   }
 
   //Expose the user BehaviourSubject
-  Stream<User?> getUser() async* {
-    if (!_userSubject.hasValue) {
+  Stream<UserCredentials?> createUserSession() async* {
+    if (!_userCredentialsSubject.hasValue) {
       final userInfo = await Future.wait([
         _secureStorage.getEmail(),
         _secureStorage.getUsername(),
@@ -138,12 +182,63 @@ class UserRepository {
       final username = userInfo[1];
 
       if (email != null && username != null) {
-        _userSubject.add(User(username: username, email: email));
+        _userCredentialsSubject.add(UserCredentials(
+          username: username,
+          email: email,
+        ));
       } else {
-        _userSubject.add(null);
+        _userCredentialsSubject.add(null);
       }
 
+      yield* _userCredentialsSubject.stream;
+    }
+  }
+
+  Stream<User?> getUser() async* {
+    try {
+      final remoteApiUser = await remoteUsersApi.getUser();
+
+      Future.wait([
+        _secureStorage.upsertUser(
+          username: remoteApiUser.username,
+          picUrl: remoteApiUser.picUrl,
+          publicFavoritesCount: remoteApiUser.publicFavoritesCount,
+          followers: remoteApiUser.followers,
+          following: remoteApiUser.following,
+          isProUser: remoteApiUser.isProUser,
+        ),
+        _secureStorage.upsertAccountDetails(
+          email: remoteApiUser.accountDetails!.email,
+          privateFavoritesCount:
+              remoteApiUser.accountDetails!.privateFavoritesCount,
+          proExpiration: remoteApiUser.accountDetails!.proExpiration,
+        )
+      ]);
+
+      // Use a mapper function, toDomainModel(), to convert the
+      //remoteApiUser object from UserRM type to the User type.
+      final domainUser = remoteApiUser.toDomainModel();
+
+      //Replaced- or added, if this is the first getUser() request or
+      //a new value to the BehaviourSubject.
+      _userSubject.add(domainUser);
+
       yield* _userSubject.stream;
+    } catch (e) {
+      switch (e) {
+        /*
+      Capture any FavQsExceptions and convert it to an equivalent 
+      domain_models exception since the former is only known by packages 
+      importing fav_qs_api_v2 internal package, which isn't the case
+      for this UserRepository class. The latter is from domain_models
+      package, and therefore known to all features, making it possible
+      for them to handle the exception properly.
+      */
+        case UserNotFoundFavQsException():
+          throw UserNotFound();
+        default:
+          break;
+      }
     }
   }
 
@@ -163,8 +258,8 @@ class UserRepository {
       await _secureStorage.upsertUserInfo(
           username: username, email: email, token: userToken);
 
-      _userSubject.add(
-        User(username: username, email: email),
+      _userCredentialsSubject.add(
+        UserCredentials(username: username, email: email),
       );
     } catch (e) {
       switch (e) {
@@ -217,7 +312,7 @@ class UserRepository {
         enableProfanityFilter: enableProfanityFilter,
       );
 
-      _userSubject.add(User(
+      _updateUserSubject.add(UpdateUser(
         username: username,
         email: email,
         password: newPassword,
