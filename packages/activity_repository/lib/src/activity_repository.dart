@@ -145,6 +145,96 @@ class ActivityRepository {
     );
   }
 
+  Future<void> deleteActivity(int activityId) async {
+    final cachedActivity = await _localStorage.getActivity(activityId);
+
+    if (cachedActivity != null) {
+      await _localStorage.deleteActivity(activityId);
+      return;
+    }
+    try {
+      await remoteActivityApi.deleteActivity(activityId);
+    } on ActivityNotFoundFavQsException {
+      throw ActivityNotFound();
+    } on UserSessionNotFoundFavQsException {
+      throw UserSessionNotFound();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> follow({
+    String? author,
+    String? tag,
+    String? username,
+  }) async {
+    await _executeFollowUnfollow(
+      performAction: () => remoteActivityApi.followEntity(
+        author: author,
+        tag: tag,
+        username: username,
+      ),
+      shouldClearCache: true,
+    );
+  }
+
+  Future<void> unfollow({
+    FollowingItemCM? followingItem,
+    String? author,
+    String? tag,
+    String? username,
+  }) async {
+    final entityFromCache =
+        await _localStorage.getFollowingItem(followingItem!);
+
+    await _executeFollowUnfollow(
+      performAction: () => remoteActivityApi.unfollowEntity(
+        author: author,
+        tag: tag,
+        username: username,
+      ),
+      shouldClearCache: entityFromCache == null,
+      updateCacheAction: () {
+        if (entityFromCache != null) {
+          return _localStorage.performActionOnFollowingEntity(
+            followingItem,
+            shouldInvalidateFollowingList: true,
+          );
+        }
+        return Future.value();
+      },
+    );
+  }
+
+  Future<void> _executeFollowUnfollow({
+    required Future<void> Function() performAction,
+    required bool shouldClearCache,
+    Future<void> Function()? updateCacheAction,
+  }) async {
+    try {
+      await performAction();
+      if (shouldClearCache) {
+        await _localStorage.clearFollowingListPageList();
+      } else if (updateCacheAction != null) {
+        await updateCacheAction();
+      }
+    } on AuthorNotFoundFavQsException {
+      throw AuthorNotFound();
+    } on TagNotFoundFavQsException {
+      throw TagNotFound();
+    } on UserNotFoundFavQsException {
+      throw UserNotFound();
+    } on UserSessionNotFoundFavQsException {
+      throw UserSessionNotFound();
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> clearCache() async {
+    await _localStorage.clear();
+  }
+
   Future<ActivitiesListPageRM> _getActivitiesListPageFromNetwork({
     int? page,
     String searchTerm = '',

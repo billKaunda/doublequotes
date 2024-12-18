@@ -2,7 +2,7 @@ name: activity_repository
 publish_to: none
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.6.0-334.4.beta
 
 dependencies:
   fav_qs_api_v2:
@@ -11,8 +11,7 @@ dependencies:
     path: ../domain_models
   key_value_storage:
     path: ../key_value_storage
-  doublequotes:
-    path: ../../
+  meta: ^1.15.0
 
 dev_dependencies:
   lints: ^5.1.0

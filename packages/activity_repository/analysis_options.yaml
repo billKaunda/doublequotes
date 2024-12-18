@@ -3,4 +3,3 @@ include: package:lints/recommended.yaml
 linter:
   rules:
     - prefer_const_constructors
-    - depend_on_referenced_packages

@@ -59,6 +59,23 @@ class ActivityLocalStorage {
     return box.get(page);
   }
 
+  Future<FollowingItemCM?> getFollowingItem(
+    FollowingItemCM followingItem,
+  ) async {
+    final box = await activityKeyValueStorage.followingListPageBox;
+    final followingEntitiesList =
+        [...box.values].expand((eachList) => eachList.followingItems!);
+
+    try {
+      final retrievedEntity = followingEntitiesList.firstWhere(
+        (entity) => entity.followingId == followingItem.followingId,
+      );
+      return retrievedEntity;
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<void> clearActivitiesListPageList() async {
     final box = await activityKeyValueStorage.activitiesListPageBox;
     await box.clear();
@@ -88,6 +105,17 @@ class ActivityLocalStorage {
     ]);
   }
 
+  Future<void> performActionOnFollowingEntity(
+    FollowingItemCM followingItem, {
+    bool shouldInvalidateFollowingList = false,
+  }) async {
+    if (shouldInvalidateFollowingList) {
+      final box = await activityKeyValueStorage.followingListPageBox;
+      await box.performActionOnFollowingEntity(followingItem);
+    }
+    return;
+  }
+
   Future<void> deleteActivity(int activityId) async {
     final activity = await getActivity(activityId);
 
@@ -104,5 +132,35 @@ class ActivityLocalStorage {
     } else {
       return;
     }
+  }
+}
+
+extension on Box<FollowingListPageCM> {
+  Future<void> performActionOnFollowingEntity(
+    FollowingItemCM followingItem,
+  ) async {
+    final eachPage = values.toList();
+
+    try {
+      final outdatedPage = eachPage.firstWhere(
+        (page) => page.followingItems!.any(
+          (item) => item.followingId == followingItem.followingId,
+        ),
+      );
+
+      final outdatePageIndex = eachPage.indexOf(outdatedPage);
+
+      final updatedFollowingListPage = FollowingListPageCM(
+          isLastPage: outdatedPage.isLastPage,
+          followingItems: outdatedPage.followingItems!
+              .map((item) => item.followingId == followingItem.followingId
+                  ? followingItem
+                  : item)
+              .toList());
+
+      //Indeces are zero-based but page numbers are not.
+      final pageNumber = outdatePageIndex + 1;
+      return put(pageNumber, updatedFollowingListPage);
+    } catch (_) {}
   }
 }
