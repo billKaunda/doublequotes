@@ -1,0 +1,15 @@
+{
+    "@@locale": "sw",
+    "quoteNotFoundErrorMessageTitle": "Nukuu Haijapatikana",
+    "quoteNotFoundErrorMessageBody": "Samahani, nukuu uliyoomba haiwezi kurejeshwa. Tafadhali, jaribu tena.",
+    "addQuoteMenuItemButtonLabel":"Ongeza nukuu",
+    "addTagToQuoteMenuItemButtonLabel":"Ongeza lebo kwa nukuu",
+    "makeQuotePublicMenuItemButtonLabel":"Weka nukuu hadharani",
+    "makeQuotePrivateMenuItemButtonLabel": "Fanya nukuu iwe ya faragha",
+    "cannotUnfavPrivateQuoteErrorMessage": "Nukuu za kibinafsi haziwezi kutenduliwa",
+    "userSessionNotFoundErrorMessage": "Tafadhali jisajili ili endelee",
+    "proUserRequiredErrorMessage": "Pata toleo jipya la Pro",
+    "couldNotCreateQuoteErrorMessage": "Samahani, hatukuweza kuunda nukuu",
+    "unknownAuthorPlaceholder" : "Mwandishi hajulikani",
+    "noContentAvailablePlaceholder": "Hakuna maudhui yanayopatikana"
+}

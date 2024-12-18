@@ -16,6 +16,7 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
           const SettingsMenuInProgress(),
         ) {
     _registerEventHandler();
+    
   }
 
   final UserRepository userRepository;
@@ -25,9 +26,9 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
     on<SettingsMenuStarted>(
       (_, emitter) async {
         await emitter.onEach(
-          Rx.combineLatest4<User?, ThemeSourcePreference, DarkModePreference,
-              LanguagePreference, SettingsMenuLoaded>(
-            userRepository.getUser(),
+          Rx.combineLatest4<UserCredentials?, ThemeSourcePreference,
+              DarkModePreference, LanguagePreference, SettingsMenuLoaded>(
+            userRepository.createUserSession(),
             userRepository.getThemeSourcePreference(),
             userRepository.getDarkModePreference(),
             userRepository.getLanguagePreference(),
@@ -37,7 +38,7 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
               themeSourcePreference: themeSourcePreference,
               darkModePreference: darkModePreference,
               languagePreference: languagePreference,
-              username: user?.username,
+              username: user!.username,
             ),
           ),
           onData: emitter.call,
@@ -63,7 +64,7 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
         event.themeSourcePreference,
       );
 
-      add(SettingsMenuStarted());
+      add(const SettingsMenuStarted());
     });
 
     on<SettingsMenuDarkModePrefChanged>((event, _) async {
@@ -71,7 +72,7 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
         event.darkModePreference,
       );
 
-      add(SettingsMenuStarted());
+      add(const SettingsMenuStarted());
     });
 
     on<SettingsMenuLanguagePrefChanged>((event, _) async {
@@ -79,7 +80,7 @@ class SettingsMenuBloc extends Bloc<SettingsMenuEvent, SettingsMenuState> {
         event.languagePreference,
       );
 
-      add(SettingsMenuStarted());
+      add(const SettingsMenuStarted());
     });
   }
 }

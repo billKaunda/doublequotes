@@ -7,7 +7,7 @@ class SettingsMenuLocalizationsEn extends SettingsMenuLocalizations {
   SettingsMenuLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get themeSettingsTileLabel => 'Theme Settings';
+  String get themeSettingsTileLabel => 'Theme';
 
   @override
   String get defaultThemeTileLabel => 'Default';

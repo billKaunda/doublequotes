@@ -12,8 +12,8 @@ class ForgotMyPasswordDialog extends StatelessWidget {
     required this.userRepository,
     required this.onCancelTap,
     required this.onEmailRequestSuccess,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final UserRepository userRepository;
   final VoidCallback onCancelTap;
@@ -38,8 +38,8 @@ class ForgotMyPasswordView extends StatefulWidget {
   const ForgotMyPasswordView({
     required this.onCancelTap,
     required this.onEmailRequestSuccess,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   final VoidCallback onCancelTap;
   final VoidCallback onEmailRequestSuccess;
@@ -71,6 +71,7 @@ class _ForgotMyPasswordViewState extends State<ForgotMyPasswordView> {
   @override
   Widget build(BuildContext context) {
     final l10n = ForgotMyPasswordLocalizations.of(context);
+
     return BlocConsumer<ForgotMyPasswordCubit, ForgotMyPasswordState>(
       listener: (context, state) {
         if (state.submissionStatus == SubmissionStatus.success) {
@@ -126,6 +127,7 @@ class _ForgotMyPasswordViewState extends State<ForgotMyPasswordView> {
                   Text(
                     l10n.errorMessage,
                     style: const TextStyle(
+                      //TODO See if you want to modify this to use color from theme or just leave it as it is
                       color: Colors.red,
                       fontSize: FontSize.medium,
                     ),

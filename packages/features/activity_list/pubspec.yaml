@@ -1,0 +1,32 @@
+name: activity_list
+publish_to: none
+
+environment:
+  sdk: ^3.6.0-334.4.beta
+
+dependencies:
+  flutter:
+    sdk: flutter
+  component_library:
+    path: ../../component_library
+  domain_models:
+    path: ../../domain_models
+  activity_repository:
+    path: ../../activity_repository
+  user_repository:
+    path: ../../user_repository
+  key_value_storage:
+    path: ../../key_value_storage
+  fav_qs_api_v2:
+    path: ../../fav_qs_api_v2
+  flutter_bloc: ^8.1.6
+  bloc_concurrency: ^0.2.5
+  equatable: ^2.0.5
+  infinite_scroll_pagination: ^4.1.0
+  rxdart: ^0.27.7
+
+
+dev_dependencies:
+
+flutter:
+  uses-material-design: true

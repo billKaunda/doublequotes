@@ -1,0 +1,31 @@
+{
+    "@@locale": "en",
+    "followingListRefreshErrorMessage" : "We couldn't refresh your items.\nPlease check your internet connectivity and then try again.",
+    "@followingListRefreshErrorMessage":{
+        "description": "Error message displayed when following list cannot be refreshed."
+    },
+    "userChoiceChipLabel": "User",
+    "@userChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the activity list page by user"
+    },
+    "firstPageFetchErrorMessageTitle": "First Page Fetch Error",
+    "@firstPageFetchErrorMessageTitle":{
+        "description": "Title of exception indicator displayed when there is an error loading the first page."
+    },
+    "firstPageFetchErrorMessageBody": "Error loading the first page. Please, tap Try Again",
+    "@firstPageFetchErrorMessageBody":{
+        "description": "Message body of the exception indicator displayed when loading the first page."
+    },
+    "authorListTileSubtitle" : "Author",
+    "@authorListTileSubtitle": {
+        "description": "Subtitle of the list tile for an author following a user."
+    },
+    "tagListTileSubtitle": "Tag",
+    "@tagListTileSubtitle":{
+        "description": "Subtitle of the list tile for a given tag following a user."
+    },
+    "userListTileSubtitle": "User",
+    "@userListTileSubtitle":{
+        "description": "Subtitle of the list tile for a user following a user."
+    }
+}

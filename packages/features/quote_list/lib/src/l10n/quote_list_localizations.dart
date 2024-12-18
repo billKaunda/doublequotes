@@ -119,6 +119,12 @@ abstract class QuoteListLocalizations {
   /// **'Tag'**
   String get tagChoiceChipLabel;
 
+  /// Label of the choice chip to filter the quote list page by user
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get userChoiceChipLabel;
+
   /// Label for choice chip used to filter quotes hidden by the user.
   ///
   /// In en, this message translates to:

@@ -2,19 +2,20 @@ name: forgot_my_password
 publish_to: none
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.6.0-334.4.beta
 
 dependencies:
   flutter:
     sdk: flutter
-  doublequotes:
-    path: ../../../
   component_library:
     path: ../../component_library
   user_repository:
     path: ../../user_repository
   form_fields:
     path: ../../form_fields
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  
 
 dev_dependencies:
   flutter_test:

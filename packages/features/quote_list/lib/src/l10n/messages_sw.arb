@@ -4,6 +4,7 @@
     "favoritesChoiceChipLabel" : "Vipendwa",
     "authorChoiceChipLabel" : "Mwandishi",
     "tagChoiceChipLabel": "Tagi",
+    "userChoiceChipLabel": "Mtumiaji",
     "hiddenChoiceChipLabel" : "Zilizofichwa",
     "privateChoiceChipLabel" : "Za kibinafsi",
     "noQuoteBodyErrorMessage": "Hakuna mwili wa nukuu uliopatikana",

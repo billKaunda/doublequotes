@@ -1,0 +1,10 @@
+arb-dir: lib/src/l10n
+template-arb-file: messages_en.arb
+output-localization-file: quote_details_localizations.dart
+output-class: QuoteDetailsLocalizations
+preferred-supported-locales:
+  - "en"
+  - "sw"
+project-dir: ../../../
+synthetic-package: false
+nullable-getter: false

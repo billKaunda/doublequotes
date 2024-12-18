@@ -22,12 +22,20 @@ class QuotePagedGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = QuoteListLocalizations.of(context);
-    final theme = WallpaperDoubleQuotesTheme.of(context);
+    final wallpaperTheme = WallpaperDoubleQuotesTheme.maybeOf(context);
+    final defaultTheme = DefaultDoubleQuotesTheme.maybeOf(context);
+    final screenMargin =
+        (wallpaperTheme?.screenMargin ?? defaultTheme?.screenMargin) ??
+            Spacing.mediumLarge;
+    final gridSpacing =
+        (wallpaperTheme?.gridSpacing ?? defaultTheme?.gridSpacing) ??
+            Spacing.mediumLarge;
     final onQuoteSelected = this.onQuoteSelected;
     final bloc = context.read<QuoteListBloc>();
+
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.screenMargin,
+        horizontal: screenMargin,
       ),
       child: PagedMasonryGridView.count(
         pagingController: pagingController,
@@ -85,8 +93,8 @@ class QuotePagedGridView extends StatelessWidget {
           },
         ),
         crossAxisCount: _gridColumnCount,
-        crossAxisSpacing: theme.gridSpacing,
-        mainAxisSpacing: theme.gridSpacing,
+        crossAxisSpacing: gridSpacing,
+        mainAxisSpacing: gridSpacing,
       ),
     );
   }

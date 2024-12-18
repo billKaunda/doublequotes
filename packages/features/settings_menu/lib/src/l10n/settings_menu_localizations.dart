@@ -98,7 +98,7 @@ abstract class SettingsMenuLocalizations {
   /// Label for the tile which a user can tap to change theme settings for the app.
   ///
   /// In en, this message translates to:
-  /// **'Theme Settings'**
+  /// **'Theme'**
   String get themeSettingsTileLabel;
 
   /// Label for the tile to select the app's default theme settings.

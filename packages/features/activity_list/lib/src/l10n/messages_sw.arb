@@ -1,0 +1,22 @@
+{ 
+    "@@locale": "sw",
+    "activityListRefreshErrorMessage" : "Hatukuweza kuonyesha upya vipengee vyako.\nTafadhali angalia muunganisho wako wa mtandao kisha ujaribu tena.",
+    "authorChoiceChipLabel" : "Mwandishi",
+    "tagChoiceChipLabel": "Tagi",
+    "userChoiceChipLabel": "Mtumiaji",
+    "followersChoiceChipLabel": "Wafuasi",
+    "noActivityBodyErrorMessage": "Hakuna Mwili wa Shughuli uliopatikana",
+    "firstPageFetchErrorMessageTitle": "Hitilafu ya Kuleta Ukurasa wa Kwanza",
+    "firstPageFetchErrorMessageBody": "Hitilafu katika kupakia ukurasa wa kwanza. Tafadhali, jaribu tena.",
+    "activityOwnerTypeMissing" : "Aina ya Mmiliki Haipo",
+    "activityOwnerNotFound" : "Thamani ya Mmiliki Haijapatikana",
+    "activityActionNotFound": "Hakuna kitendo kilichopatikana kwenye shughuli hii",
+    "activityTrackableTypeMissing" : "Aina Inayofuatiliwa Haipo",
+    "trackableValueNotFound": "Thamani Inayoweza Kufuatiliwa Haijapatikana",
+    "activityMessageBodyNotFound" : "Mwili wa Ujumbe Utupu",
+    "customAlertDialogTitle" : "Futa Shughuli",
+    "customAlertDialogContent": "Je, una uhakika unataka kufuta shughuli hii ya {trackableType} ya {ownerValue}",
+    "cancelButtonLabel": "Ghairi",
+    "deleteButtonLabel": "Futa"
+
+}

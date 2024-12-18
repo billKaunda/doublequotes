@@ -64,7 +64,6 @@ class QuoteListView extends StatefulWidget {
 }
 
 class _QuoteListViewState extends State<QuoteListView> {
-  
   final PagingController<int, Quote> _pagingController = PagingController(
     firstPageKey: 1,
   );
@@ -100,8 +99,12 @@ class _QuoteListViewState extends State<QuoteListView> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = WallpaperDoubleQuotesTheme.of(context);
     final l10n = QuoteListLocalizations.of(context);
+    final screenMargin =
+        (WallpaperDoubleQuotesTheme.maybeOf(context)?.screenMargin ??
+                DefaultDoubleQuotesTheme.maybeOf(context)?.screenMargin) ??
+            Spacing.mediumLarge;
+
     return BlocListener<QuoteListBloc, QuoteListState>(
       listener: (context, state) {
         final searchBarText = _textEditingController.text;
@@ -153,10 +156,11 @@ class _QuoteListViewState extends State<QuoteListView> {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal: theme.screenMargin,
+                      horizontal: screenMargin,
                     ),
                     child: CustomSearchBar(
                       textEditingController: _textEditingController,
+                      //suggestionsBuilder: (context, searchController) {},
                     ),
                   ),
                   const FilterHorizontalList(),

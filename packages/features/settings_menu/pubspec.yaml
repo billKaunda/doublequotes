@@ -2,11 +2,11 @@ name: settings_menu
 publish_to: none
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.6.0-334.4.beta
 
 dependencies:
-  doublequotes:
-    path: ../../../
+  flutter:
+    sdk: flutter
   component_library:
     path: ../../component_library
   user_repository:
@@ -15,8 +15,14 @@ dependencies:
     path: ../../quote_repository
   domain_models:
     path: ../../domain_models
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  rxdart: ^0.27.7
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
 
 flutter:
   uses-material-design: true

@@ -1,0 +1,51 @@
+{
+    "@@locale": "en",
+    "quoteNotFoundErrorMessageTitle": "Quote Not Found",
+    "@quoteNotFoundErrorMessageTitle":{
+        "description": "Error message displayed if a selected quote cannot be found."
+    },
+    "quoteNotFoundErrorMessageBody": "Ooopss, the requested quote cannot be retrieved, please try again.",
+    "@quoteNotFoundErrorMessageBody": {
+        "description": "The body of the quote not found error message showing that the requested quote can't be found."
+    },
+    "addQuoteMenuItemButtonLabel":"Add Quote",
+    "@addQuoteMenuItemButtonLabel":{
+        "description": "Label for the MenuItemButton which a user can tap to add a quote to FavQs.com"
+    },
+    "addTagToQuoteMenuItemButtonLabel":"Add tag to quote",
+    "@addTagToQuoteMenuItemButtonLabel":{
+        "description": "Label for the MenuItemButton which a user can tap to add personal tags to a quote."
+    },
+    "makeQuotePublicMenuItemButtonLabel":"Make quote public",
+    "@makeQuotePublicMenuItemButtonLabel": {
+        "description": "Label for the MenuItemButton which publicizes a quote on request."
+    },
+    "makeQuotePrivateMenuItemButtonLabel": "Make quote private",
+    "@makeQuotePrivateMenuItemButtonLabel":{
+        "description": "Label for the MenuItemButton which turns on the private field of the given quote."
+    },
+    "cannotUnfavPrivateQuoteErrorMessage": "Private quotes cannot be unfav'd",
+    "@cannotUnfavPrivateQuoteErrorMessage":{
+        "description": "Error message given if a pro user tries to unfav a private quote added by him."
+    },
+    "userSessionNotFoundErrorMessage": "Please sign in to continue",
+    "@userSessionNotFoundErrorMessage": {
+        "description": "Error message displayed if the requested action can only be performed by a signed in user."
+    },
+    "proUserRequiredErrorMessage": "Upgrade to Pro",
+    "@proUserRequiredErrorMessage":{
+        "description": "Error message displayed when requested action on a quote can only be performed by a pro user."
+    },
+    "couldNotCreateQuoteErrorMessage": "Ooopss, could not create quote",
+    "@couldNotCreateQuoteErrorMessage":{
+        "description": "Error message shown when a quote cannot be added."
+    },
+    "unknownAuthorPlaceholder" : "Unknown author",
+    "@unknownAuthorPlaceholder":{
+        "description": "Placeholder value when the author of a quote is null."
+    },
+    "noContentAvailablePlaceholder": "No content available",
+    "@noContentAvailablePlaceholder":{
+        "description": "Placeholder value when the body of a quote dialogue line is empty."
+    }
+}

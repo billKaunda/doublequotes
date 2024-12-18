@@ -19,6 +19,9 @@ class QuoteListLocalizationsSw extends QuoteListLocalizations {
   String get tagChoiceChipLabel => 'Tagi';
 
   @override
+  String get userChoiceChipLabel => 'Mtumiaji';
+
+  @override
   String get hiddenChoiceChipLabel => 'Zilizofichwa';
 
   @override

@@ -12,6 +12,7 @@ class DarkModePreferencePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = SettingsMenuLocalizations.of(context);
     final bloc = context.read<SettingsMenuBloc>();
+
     return CustomSimpleDialog(
       title: l10n.darkModePrefSimpleDialogTitle,
       children: [
@@ -24,7 +25,7 @@ class DarkModePreferencePicker extends StatelessWidget {
               value: DarkModePreference.highContrastDark,
               groupValue: currentValue,
               onChanged: (value) => bloc.add(
-                SettingsMenuDarkModePrefChanged(
+                const SettingsMenuDarkModePrefChanged(
                   DarkModePreference.highContrastDark,
                 ),
               ),
@@ -34,8 +35,8 @@ class DarkModePreferencePicker extends StatelessWidget {
               title: l10n.darkOptionTileLabel,
               value: DarkModePreference.dark,
               groupValue: currentValue,
-              onChanged: (value) => bloc.add(
-                SettingsMenuDarkModePrefChanged(
+              onChanged: (value) =>  bloc.add(
+                const SettingsMenuDarkModePrefChanged(
                   DarkModePreference.dark,
                 ),
               ),
@@ -46,7 +47,7 @@ class DarkModePreferencePicker extends StatelessWidget {
               value: DarkModePreference.light,
               groupValue: currentValue,
               onChanged: (value) => bloc.add(
-                SettingsMenuDarkModePrefChanged(
+                const SettingsMenuDarkModePrefChanged(
                   DarkModePreference.light,
                 ),
               ),
@@ -57,7 +58,7 @@ class DarkModePreferencePicker extends StatelessWidget {
               value: DarkModePreference.highContrastLight,
               groupValue: currentValue,
               onChanged: (value) => bloc.add(
-                SettingsMenuDarkModePrefChanged(
+                const SettingsMenuDarkModePrefChanged(
                   DarkModePreference.highContrastLight,
                 ),
               ),
@@ -68,7 +69,7 @@ class DarkModePreferencePicker extends StatelessWidget {
               value: DarkModePreference.accordingToSystemSettings,
               groupValue: currentValue,
               onChanged: (value) => bloc.add(
-                SettingsMenuDarkModePrefChanged(
+                const SettingsMenuDarkModePrefChanged(
                   DarkModePreference.accordingToSystemSettings,
                 ),
               ),

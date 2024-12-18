@@ -31,9 +31,9 @@ class QuoteListBloc extends Bloc<QuoteListEvent, QuoteListState> {
     // You subscribe to the Stream using the listen() function which returns
     // a subscription object which is stored in the _authChangesSubscription
     // property
-    _authChangesSubscription = userRepository.getUser().listen(
+    _authChangesSubscription = userRepository.createUserSession().listen(
       (user) {
-        //Every time you get a new value from getUser() stream, you
+        //Every time you get a new value from createUserSession() stream, you
         //store the new username inside the _authenticatedUsername
         // property. This allows you to read that value from other
         // parts of your Bloc code.
@@ -103,7 +103,7 @@ class QuoteListBloc extends Bloc<QuoteListEvent, QuoteListState> {
       final debounceEventStream = eventStream
           .whereType<QuoteListSearchTermChanged>()
           .debounceTime(
-            const Duration(seconds: 1),
+            const Duration(seconds: 2),
           )
           /*
           Skip searches where the term entered by the user is equal to 
@@ -603,11 +603,11 @@ class QuoteListBloc extends Bloc<QuoteListEvent, QuoteListState> {
             : '',
         tag: currentlyAppliedFilter is QuoteListFilterByTypeLookup &&
                 currentlyAppliedFilter.typeLookup == TypeLookup.tag
-            ? TypeLookup.tag.name
+            ? currentlyAppliedFilter.typeLookup.name
             : null,
         author: currentlyAppliedFilter is QuoteListFilterByTypeLookup &&
                 currentlyAppliedFilter.typeLookup == TypeLookup.author
-            ? TypeLookup.author.name
+            ? currentlyAppliedFilter.typeLookup.name
             : null,
         favoritedByUsername:
             currentlyAppliedFilter is QuoteListFilterByFavorites

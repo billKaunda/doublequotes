@@ -32,7 +32,7 @@ class QuoteListTypeLookupChanged extends QuoteListEvent {
       ];
 }
 
-class QuoteListSearchTermChanged extends QuoteListEvent {
+class QuoteListSearchTermChanged extends QuoteListTypeLookupChanged {
   const QuoteListSearchTermChanged(
     this.searchTerm,
   );

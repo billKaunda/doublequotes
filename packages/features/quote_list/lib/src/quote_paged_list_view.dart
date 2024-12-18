@@ -19,14 +19,21 @@ class QuotePagedListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = WallpaperDoubleQuotesTheme.of(context);
+    final wallpaperTheme = WallpaperDoubleQuotesTheme.maybeOf(context);
+    final defaultTheme = DefaultDoubleQuotesTheme.maybeOf(context);
+    final screenMargin =
+        (wallpaperTheme?.screenMargin ?? defaultTheme?.screenMargin) ??
+            Spacing.mediumLarge;
+    final gridSpacing =
+        (wallpaperTheme?.gridSpacing ?? defaultTheme?.gridSpacing) ??
+            Spacing.mediumLarge;
     final l10n = QuoteListLocalizations.of(context);
     final bloc = context.read<QuoteListBloc>();
     final onQuoteSelected = this.onQuoteSelected;
 
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: theme.screenMargin,
+        horizontal: screenMargin,
       ),
       child: PagedListView.separated(
         pagingController: pagingController,
@@ -84,7 +91,7 @@ class QuotePagedListView extends StatelessWidget {
           },
         ),
         separatorBuilder: (context, index) => SizedBox(
-          height: theme.gridSpacing,
+          height: gridSpacing,
         ),
       ),
     );

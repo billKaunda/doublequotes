@@ -16,6 +16,10 @@
     "@tagChoiceChipLabel":{
         "description": "Label of the choice chip to filter the quote list page by tag"
     },
+    "userChoiceChipLabel": "User",
+    "@userChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the quote list page by user"
+    },
     "hiddenChoiceChipLabel" : "Hidden",
     "@hiddenChoiceChipLabel":{
         "description": "Label for choice chip used to filter quotes hidden by the user."

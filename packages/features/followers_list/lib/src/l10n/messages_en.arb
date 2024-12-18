@@ -1,0 +1,27 @@
+{
+    "@@locale": "en",
+    "followersListRefreshErrorMessage" : "We couldn't refresh your items.\nPlease check your internet connectivity and then try again.",
+    "@followersListRefreshErrorMessage":{
+        "description": "Error message displayed when the followers list cannot be refreshed."
+    },
+    "firstPageFetchErrorMessageTitle": "First Page Fetch Error",
+    "@firstPageFetchErrorMessageTitle":{
+        "description": "Title of exception indicator displayed when there is an error loading the first page."
+    },
+    "firstPageFetchErrorMessageBody": "Error loading the first page. Please, tap Try Again",
+    "@firstPageFetchErrorMessageBody":{
+        "description": "Message body of the exception indicator displayed when loading the first page."
+    },
+    "authorChoiceChipLabel" : "Author",
+    "@authorChoiceChipLabel": {
+        "description": "Label of the choice chip to enable a user filter the activity list page by author."
+    },
+    "tagChoiceChipLabel": "Tag",
+    "@tagChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the activity list page by tag"
+    },
+    "userChoiceChipLabel": "User",
+    "@userChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the activity list page by user"
+    }
+}

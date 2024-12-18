@@ -8,4 +8,3 @@ preferred-supported-locales:
 project-dir: ../../../
 synthetic-package: false
 nullable-getter: false
-untranslated-messages-file: settings_menu_untranslated.dart

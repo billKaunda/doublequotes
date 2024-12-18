@@ -1,0 +1,10 @@
+{
+    "@@locale": "sw",
+    "followingListRefreshErrorMessage" : "Hatukuweza kuonyesha upya vipengee vyako.\nTafadhali angalia muunganisho wako wa mtandao kisha ujaribu tena.",
+    "userChoiceChipLabel": "Mtumiaji",
+    "firstPageFetchErrorMessageTitle": "Hitilafu ya Kuleta Ukurasa wa Kwanza",
+    "firstPageFetchErrorMessageBody": "Hitilafu katika kupakia ukurasa wa kwanza. Tafadhali, jaribu tena",
+    "authorListTileSubtitle" : "Mwandishi",
+    "tagListTileSubtitle": "Tagi",
+    "userListTileSubtitle": "Mtumiaji"
+}

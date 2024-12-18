@@ -20,121 +20,150 @@ class FilterHorizontalList extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const FavoritesChip(),
+          const _ThemeBasedChip(builder: _buildFavoritesChip),
           ...TypeLookup.values.map(
-            (typeLookup) => _FilterChoiceChip(
-              typeLookup: typeLookup,
-            ),
+            (typeLookup) => _FilterChoiceChip(typeLookup: typeLookup),
           ),
-          const HiddenChip(),
-          const PrivateChip(),
+          const _ThemeBasedChip(builder: _buildHiddenChip),
+          const _ThemeBasedChip(builder: _buildPrivateChip),
         ],
       ),
     );
   }
 }
 
-class FavoritesChip extends StatelessWidget {
-  const FavoritesChip({super.key});
+// Base widget to handle theme logic for chips
+class _ThemeBasedChip extends StatelessWidget {
+  const _ThemeBasedChip({
+    required this.builder,
+    super.key,
+  });
+
+  final Widget Function(BuildContext, ThemeData, double) builder;
 
   @override
   Widget build(BuildContext context) {
-    final wallpaperTheme = WallpaperDoubleQuotesTheme.of(context);
-    return FutureBuilder(
-      future: wallpaperTheme.themeData,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CenteredCircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          throw const ExceptionIndicator(
-            title: 'Unable to load theme',
-            message: 'Error loading theme for FavoritesChip',
-          );
-        } else if (snapshot.hasData) {
-          final theme = snapshot.data!;
-          return Padding(
-            padding: EdgeInsets.only(
-              right: _itemSpacing,
-              left: wallpaperTheme.screenMargin,
-            ),
-            child: BlocSelector<QuoteListBloc, QuoteListState, bool>(
-              selector: (state) {
-                final isFilteringByFavorites =
-                    state.filter is QuoteListFilterByFavorites;
+    final wallpaperTheme = WallpaperDoubleQuotesTheme.maybeOf(context);
+    final defaultTheme = DefaultDoubleQuotesTheme.maybeOf(context);
+    final screenMargin =
+        (wallpaperTheme?.screenMargin ?? defaultTheme?.screenMargin) ??
+            Spacing.mediumLarge;
 
-                return isFilteringByFavorites;
-              },
-              builder: (context, isFavoritesOnly) {
-                final l10n = QuoteListLocalizations.of(context);
-                return RoundedChoiceChip(
-                  label: l10n.favoritesChoiceChipLabel,
-                  avatar: Icon(
-                    isFavoritesOnly
-                        ? Icons.favorite
-                        : Icons.favorite_border_outlined,
-                    color: isFavoritesOnly
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.primaryContainer,
-                  ),
-                  isSelected: isFavoritesOnly,
-                  onSelected: (isSelected) {
-                    _releaseFocus(context);
-                    final bloc = context.read<QuoteListBloc>();
-                    bloc.add(
-                      const QuoteListFilterByFavoritesToggled(),
-                    );
-                  },
-                );
-              },
-            ),
-          );
-        } else {
-          throw Exception(
-            'Error loading theme for FavoritesChip',
-          );
-        }
-      },
-    );
+    if (wallpaperTheme != null) {
+      return FutureBuilder<ThemeData>(
+        future: wallpaperTheme.themeData,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CenteredCircularProgressIndicator();
+          } else if (snapshot.hasError || !snapshot.hasData) {
+            return const ExceptionIndicator(
+              title: 'Theme Error',
+              message: 'Error loading chip theme',
+            );
+          }
+          return builder(context, snapshot.data!, screenMargin);
+        },
+      );
+    } else if (defaultTheme != null) {
+      return builder(context, defaultTheme.materialThemeData, screenMargin);
+    } else {
+      return const ExceptionIndicator(
+        title: 'Theme Error',
+        message: 'Error loading chip theme',
+      );
+    }
   }
 }
 
-class _FilterChoiceChip extends StatelessWidget {
-  const _FilterChoiceChip({
-    required this.typeLookup,
+// Favorites Chip
+Widget _buildFavoritesChip(
+  BuildContext context,
+  ThemeData theme,
+  double screenMargin,
+) {
+  return _Chip(
+    theme: theme,
+    screenMargin: screenMargin,
+    label: QuoteListLocalizations.of(context).favoritesChoiceChipLabel,
+    isSelected: (state) => state.filter is QuoteListFilterByFavorites,
+    onToggle: (context, bloc) =>
+        bloc.add(const QuoteListFilterByFavoritesToggled()),
+    selectedIcon: Icons.favorite,
+    unselectedIcon: Icons.favorite_border_outlined,
+  );
+}
+
+// Hidden Chip
+Widget _buildHiddenChip(
+    BuildContext context, ThemeData theme, double screenMargin) {
+  return _Chip(
+    theme: theme,
+    screenMargin: screenMargin,
+    label: QuoteListLocalizations.of(context).hiddenChoiceChipLabel,
+    isSelected: (state) => state.filter is QuoteListFilterByHidden,
+    onToggle: (context, bloc) =>
+        bloc.add(const QuoteListFilterByHiddenToggled()),
+    selectedIcon: Icons.visibility_off,
+    unselectedIcon: Icons.visibility,
+  );
+}
+
+// Private Chip
+Widget _buildPrivateChip(
+    BuildContext context, ThemeData theme, double screenMargin) {
+  return _Chip(
+    theme: theme,
+    screenMargin: screenMargin,
+    label: QuoteListLocalizations.of(context).privateChoiceChipLabel,
+    isSelected: (state) => state.filter is QuoteListFilterByPrivate,
+    onToggle: (context, bloc) =>
+        bloc.add(const QuoteListFilterByPrivateToggled()),
+    selectedIcon: Icons.public_off,
+    unselectedIcon: Icons.public,
+  );
+}
+
+class _Chip extends StatelessWidget {
+  const _Chip({
+    required this.theme,
+    required this.screenMargin,
+    required this.label,
+    required this.isSelected,
+    required this.onToggle,
+    required this.selectedIcon,
+    required this.unselectedIcon,
   });
 
-  final TypeLookup typeLookup;
+  final ThemeData theme;
+  final double screenMargin;
+  final String label;
+  final bool Function(QuoteListState) isSelected;
+  final void Function(BuildContext, QuoteListBloc) onToggle;
+  final IconData selectedIcon;
+  final IconData unselectedIcon;
 
   @override
   Widget build(BuildContext context) {
-    final theme = WallpaperDoubleQuotesTheme.of(context);
-    final isLastTypeLookup = TypeLookup.values.last == typeLookup;
     return Padding(
       padding: EdgeInsets.only(
-        right: isLastTypeLookup ? theme.screenMargin : _itemSpacing,
-        left: _itemSpacing,
+        right: _itemSpacing,
+        left: screenMargin,
       ),
-      child: BlocSelector<QuoteListBloc, QuoteListState, TypeLookup?>(
-        selector: (state) {
-          final filter = state.filter;
-          final selectedTypeLookup =
-              filter is QuoteListFilterByTypeLookup ? filter.typeLookup : null;
-
-          return selectedTypeLookup;
-        },
-        builder: (context, selectedTypeLookup) {
-          final isSelected = selectedTypeLookup == typeLookup;
+      child: BlocSelector<QuoteListBloc, QuoteListState, bool>(
+        selector: isSelected,
+        builder: (context, isSelected) {
           return RoundedChoiceChip(
-            label: typeLookup.toLocalizedString(context),
+            label: label,
+            avatar: Icon(
+              isSelected ? selectedIcon : unselectedIcon,
+              color: isSelected
+                  ? theme.colorScheme.primary
+                  : theme.colorScheme.primaryContainer,
+            ),
             isSelected: isSelected,
             onSelected: (isSelected) {
               _releaseFocus(context);
-              final bloc = context.read<QuoteListBloc>();
-              bloc.add(
-                QuoteListTypeLookupChanged(
-                  typeLookup: isSelected ? typeLookup : null,
-                ),
-              );
+              onToggle(context, context.read<QuoteListBloc>());
             },
           );
         },
@@ -143,126 +172,48 @@ class _FilterChoiceChip extends StatelessWidget {
   }
 }
 
-class HiddenChip extends StatelessWidget {
-  const HiddenChip({super.key});
+// Filter Choice Chip for TypeLookup
+class _FilterChoiceChip extends StatelessWidget {
+  const _FilterChoiceChip({
+    required this.typeLookup,
+    super.key,
+  });
+
+  final TypeLookup typeLookup;
 
   @override
   Widget build(BuildContext context) {
-    final wallpaperTheme = WallpaperDoubleQuotesTheme.of(context);
-    return FutureBuilder(
-      future: wallpaperTheme.themeData,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CenteredCircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          throw const ExceptionIndicator(
-            title: 'Theme Error',
-            message: 'Error loading theme for HiddenChoiceChip',
-          );
-        } else if (snapshot.hasData) {
-          final theme = snapshot.data!;
-          return Padding(
-            padding: EdgeInsets.only(
-              right: _itemSpacing,
-              left: wallpaperTheme.screenMargin,
-            ),
-            child: BlocSelector<QuoteListBloc, QuoteListState, bool>(
-              selector: (state) {
-                final isFilteringByHidden =
-                    state.filter is QuoteListFilterByHidden;
+    final isLastType = TypeLookup.values.last == typeLookup;
+    final screenMargin =
+        (WallpaperDoubleQuotesTheme.maybeOf(context)?.screenMargin ??
+                DefaultDoubleQuotesTheme.maybeOf(context)?.screenMargin) ??
+            0.0;
 
-                return isFilteringByHidden;
-              },
-              builder: (context, isHiddenOnly) {
-                final l10n = QuoteListLocalizations.of(context);
-                return RoundedChoiceChip(
-                  label: l10n.hiddenChoiceChipLabel,
-                  avatar: Icon(
-                    isHiddenOnly ? Icons.visibility_off : Icons.visibility,
-                    color: isHiddenOnly
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.primaryContainer,
-                  ),
-                  isSelected: isHiddenOnly,
-                  onSelected: (isSelected) {
-                    _releaseFocus(context);
-                    final bloc = context.read<QuoteListBloc>();
-                    bloc.add(
-                      const QuoteListFilterByHiddenToggled(),
-                    );
-                  },
-                );
-              },
-            ),
+    return Padding(
+      padding: EdgeInsets.only(
+        right: isLastType ? screenMargin : _itemSpacing,
+        left: _itemSpacing,
+      ),
+      child: BlocSelector<QuoteListBloc, QuoteListState, TypeLookup?>(
+        selector: (state) => state.filter is QuoteListFilterByTypeLookup
+            ? (state.filter as QuoteListFilterByTypeLookup).typeLookup
+            : null,
+        builder: (context, selectedTypeLookup) {
+          final isSelected = selectedTypeLookup == typeLookup;
+          return RoundedChoiceChip(
+            label: typeLookup.toLocalizedString(context),
+            isSelected: isSelected,
+            onSelected: (isSelected) {
+              _releaseFocus(context);
+              context.read<QuoteListBloc>().add(
+                    QuoteListTypeLookupChanged(
+                      typeLookup: isSelected ? typeLookup : null,
+                    ),
+                  );
+            },
           );
-        } else {
-          throw Exception(
-            'Error loading theme for HiddenChoiceChip',
-          );
-        }
-      },
-    );
-  }
-}
-
-class PrivateChip extends StatelessWidget {
-  const PrivateChip({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final wallpaperTheme = WallpaperDoubleQuotesTheme.of(context);
-    return FutureBuilder(
-      future: wallpaperTheme.themeData,
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CenteredCircularProgressIndicator();
-        } else if (snapshot.hasError) {
-          throw const ExceptionIndicator(
-            title: 'Theme Error',
-            message: 'Error loading theme for PrivateChoiceChip',
-          );
-        } else if (snapshot.hasData) {
-          final theme = snapshot.data!;
-          return Padding(
-            padding: EdgeInsets.only(
-              right: _itemSpacing,
-              left: wallpaperTheme.screenMargin,
-            ),
-            child: BlocSelector<QuoteListBloc, QuoteListState, bool>(
-              selector: (state) {
-                final isFilteringByPrivate =
-                    state.filter is QuoteListFilterByPrivate;
-
-                return isFilteringByPrivate;
-              },
-              builder: (context, isPrivateOnly) {
-                final l10n = QuoteListLocalizations.of(context);
-                return RoundedChoiceChip(
-                  label: l10n.privateChoiceChipLabel,
-                  avatar: Icon(
-                    isPrivateOnly ? Icons.public_off : Icons.public,
-                    color: isPrivateOnly
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.primaryContainer,
-                  ),
-                  isSelected: isPrivateOnly,
-                  onSelected: (isSelected) {
-                    _releaseFocus(context);
-                    final bloc = context.read<QuoteListBloc>();
-                    bloc.add(
-                      const QuoteListFilterByPrivateToggled(),
-                    );
-                  },
-                );
-              },
-            ),
-          );
-        } else {
-          throw Exception(
-            'Error loading theme for PrivateChoiceChip',
-          );
-        }
-      },
+        },
+      ),
     );
   }
 }
@@ -277,6 +228,8 @@ extension on TypeLookup {
         return l10n.authorChoiceChipLabel;
       case TypeLookup.tag:
         return l10n.tagChoiceChipLabel;
+      case TypeLookup.user:
+        return l10n.userChoiceChipLabel;
     }
   }
 }

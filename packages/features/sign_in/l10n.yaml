@@ -6,6 +6,5 @@ preferred-supported-locales:
   - "en"
   - "sw"
 project-dir: ../../../
-untranslated-messages-file: sign_in_untranslated.dart
 synthetic-package: false
 nullable-getter: false 

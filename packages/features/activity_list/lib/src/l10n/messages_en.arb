@@ -1,0 +1,90 @@
+{
+    "@@locale": "en",
+    "activityListRefreshErrorMessage" : "We couldn't refresh your items.\nPlease check your internet and then try again.",
+    "@activityListRefreshErrorMessage":{
+        "description": "Error message displayed when activity list cannot be refreshed."
+    },
+    "authorChoiceChipLabel" : "Author",
+    "@authorChoiceChipLabel": {
+        "description": "Label of the choice chip to enable a user filter the activity list page by author."
+    },
+    "tagChoiceChipLabel": "Tag",
+    "@tagChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the activity list page by tag"
+    },
+    "userChoiceChipLabel": "User",
+    "@userChoiceChipLabel":{
+        "description": "Label of the choice chip to filter the activity list page by user"
+    },
+    "followersChoiceChipLabel": "Followers",
+    "@followersChoiceChipLabel":{
+        "description": "Label of the choice chip to get followers for a user, tag, or author."
+    },
+    "noActivityBodyErrorMessage": "No Activity Body Found",
+    "@noActivityBodyErrorMessage":{
+        "description": "Error message displayed if an activity doesn't have a body."
+    },
+    "firstPageFetchErrorMessageTitle": "First Page Fetch Error",
+    "@firstPageFetchErrorMessageTitle":{
+        "description": "Title of exception indicator displayed when there is an error loading the first page."
+    },
+    "firstPageFetchErrorMessageBody": "Error loading the first page. Please, tap Try Again",
+    "@firstPageFetchErrorMessageBody":{
+        "description": "Message body of the exception indicator displayed when loading the first page."
+    },
+    "activityOwnerTypeMissing" : "OwnerType Is Missing",
+    "@activityOwnerTypeMissing" :{
+        "description": "Error message displayed when the activity ownerType field is null"
+    },
+    "activityOwnerNotFound" : "OwnerValue Not Found",
+    "@activityOwnerNotFound":{
+        "description": "Error message shown when the field for owner_value of an activity is not found."
+    },
+    "activityActionNotFound": "No action found on this activity",
+    "@activityActionNotFound":{
+        "description": "Error message shown when the there is no action that has been performed by the user on the given activity"
+    },
+    "activityTrackableTypeMissing" : "TrackableType Missing",
+    "@activityTrackableTypeMissing": {
+        "description": "Error message shown when the trackable type of an activity is missing"
+    },
+    "trackableValueNotFound": "TrackableValue Not Found",
+    "@trackableValueNotFound":{
+        "description": "Error message displayed when the field for trackable_value is not found"
+    },
+    "activityMessageBodyNotFound" : "Message Body Empty",
+    "@activityMessageBodyNotFound":{
+        "description": "Error message shown when the message body for an activity is missing"
+    },
+    "customAlertDialogTitle" : "Delete Activity",
+    "@customAlertDialogTitle":{
+        "description": "Title of the alert dialog displayed when a user wants to delete an activity"
+    },
+    "customAlertDialogContent": "Are you sure you want to delete this {trackableType} activity {action} by {ownerValue}",
+    "@customAlertDialogContent":{
+        "description": "Message body of the alert dialog to delete a given activity",
+        "placeholders": {
+            "trackableType":{
+                "type": "String",
+                "example": "Quote"
+            },
+            "action":{
+                "type": "String",
+                "example": "favorited"
+            },
+            "ownerValue":{
+                "type":"String",
+                "example": "gose"
+            }
+        }
+    },
+    "cancelButtonLabel": "Cancel",
+    "@cancelButtonLabel":{
+        "description": "Label for the button which when pressed pops off the AlertDialog and return the user to the activity list page."
+    },
+    "deleteButtonLabel": "Delete",
+    "@deleteButtonLabel":{
+        "description": "Label for the button to delete an activity"
+    }
+    
+}

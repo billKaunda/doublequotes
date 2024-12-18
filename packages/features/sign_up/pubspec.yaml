@@ -2,11 +2,11 @@ name: sign_up
 publish_to: none
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.6.0-334.4.beta
 
 dependencies:
-  doublequotes:
-    path: ../../../
+  flutter:
+    sdk: flutter
   component_library:
     path: ../../component_library
   domain_models:
@@ -15,10 +15,13 @@ dependencies:
     path: ../../user_repository
   form_fields:
     path: ../../form_fields
-  
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
 
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 flutter:
   uses-material-design: true

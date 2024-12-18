@@ -263,17 +263,6 @@ abstract class QuoteListFilter extends Equatable {
   List<Object?> get props => [];
 }
 
-class QuoteListFilterByTypeLookup extends QuoteListFilter {
-  const QuoteListFilterByTypeLookup(this.typeLookup);
-
-  final TypeLookup typeLookup;
-
-  @override
-  List<Object?> get props => [
-        typeLookup,
-      ];
-}
-
 class QuoteListFilterBySearchTerm extends QuoteListFilter {
   const QuoteListFilterBySearchTerm(this.searchTerm);
 
@@ -282,6 +271,19 @@ class QuoteListFilterBySearchTerm extends QuoteListFilter {
   @override
   List<Object?> get props => [
         searchTerm,
+      ];
+}
+
+class QuoteListFilterByTypeLookup extends QuoteListFilter {
+  const QuoteListFilterByTypeLookup(
+    this.typeLookup,
+  );
+
+  final TypeLookup typeLookup;
+
+  @override
+  List<Object?> get props => [
+        typeLookup,
       ];
 }
 

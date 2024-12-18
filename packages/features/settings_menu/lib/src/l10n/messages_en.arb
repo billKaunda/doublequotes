@@ -1,6 +1,6 @@
 {
     "@@locale": "en",
-    "themeSettingsTileLabel" : "Theme Settings",
+    "themeSettingsTileLabel" : "Theme",
     "@themeSettingsTileLabel":{
         "description": "Label for the tile which a user can tap to change theme settings for the app."
     },

@@ -10,6 +10,7 @@ import 'settings_menu_bloc.dart';
 
 part 'dark_mode_preference_picker.dart';
 part 'language_preference_picker.dart';
+part 'theme_source_preference_picker.dart';
 
 class SettingsMenuScreen extends StatelessWidget {
   const SettingsMenuScreen({
@@ -63,7 +64,7 @@ class SettingsMenuView extends StatelessWidget {
                 return Column(
                   children: [
                     if (!state.isUserAuthenticated) ...[
-                      _SignInButton(
+                      SignInButton(
                         onSignInTap: onSignInTap,
                       ),
                       const SizedBox(
@@ -100,6 +101,24 @@ class SettingsMenuView extends StatelessWidget {
                       ),
                       const Divider(),
                     ],
+                    const SizedBox(
+                      height: Spacing.mediumLarge,
+                    ),
+                    //Default & Wallpaper theming options
+                    CustomExpansionTile(
+                      title: l10n.themeSettingsTileLabel,
+                      subtitle: state.themeSourcePreference.toTitleCase(),
+                      children: [
+                        Builder(
+                          builder: (context) => ThemeSourcePreferencePicker(
+                            currentValue: state.themeSourcePreference,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: Spacing.mediumLarge,
+                    ),
                     //Dark Mode Preference
                     ChevronListTile(
                       title: l10n.darkModePreferencesListTileLabel,
@@ -108,6 +127,9 @@ class SettingsMenuView extends StatelessWidget {
                         currentValue: state.darkModePreference,
                       ),
                     ),
+                    const SizedBox(
+                      height: Spacing.mediumLarge,
+                    ),
                     //Language
                     ChevronListTile(
                       title: l10n.languageListTileLabel,
@@ -115,15 +137,26 @@ class SettingsMenuView extends StatelessWidget {
                       onTap: () => LanguagePreferencePicker(
                         currentValue: state.languagePreference,
                       ),
-                      leading: Icon(
+                      leading: const Icon(
                         Icons.language_rounded,
                       ),
-                      //TODO Implement theming (Default & Wallpaper) list Tile
                     ),
                     if (state.isUserAuthenticated) ...[
                       const Spacer(),
-                      _SignOutButton(
+                      SignOutButton(
                         isSignOutInProgress: state.isSignOutInProgress,
+                        expandedElevatedButton: ExpandedElevatedButton(
+                          onTap: () {
+                            final bloc = context.read<SettingsMenuBloc>();
+                            bloc.add(
+                              const SettingsMenuSignedOut(),
+                            );
+                          },
+                          label: l10n.signOutButtonLabel,
+                          icon: const Icon(
+                            Icons.logout,
+                          ),
+                        ),
                       ),
                     ],
                   ],
@@ -135,73 +168,6 @@ class SettingsMenuView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _SignInButton extends StatelessWidget {
-  const _SignInButton({
-    Key? key,
-    this.onSignInTap,
-  }) : super(key: key);
-
-  final VoidCallback? onSignInTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = WallpaperDoubleQuotesTheme.of(context);
-    final l10n = SettingsMenuLocalizations.of(context);
-    return Padding(
-      padding: EdgeInsets.only(
-        left: theme.screenMargin,
-        right: theme.screenMargin,
-        top: Spacing.xxLarge,
-      ),
-      child: ExpandedElevatedButton(
-        onTap: onSignInTap,
-        label: l10n.signInButtonLabel,
-        icon: const Icon(
-          Icons.login,
-        ),
-      ),
-    );
-  }
-}
-
-class _SignOutButton extends StatelessWidget {
-  const _SignOutButton({
-    required this.isSignOutInProgress,
-    Key? key,
-  }) : super(key: key);
-
-  final bool isSignOutInProgress;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = WallpaperDoubleQuotesTheme.of(context);
-    final l10n = SettingsMenuLocalizations.of(context);
-    return Padding(
-      padding: EdgeInsets.only(
-        left: theme.screenMargin,
-        right: theme.screenMargin,
-        bottom: Spacing.xLarge,
-      ),
-      child: isSignOutInProgress
-          ? ExpandedElevatedButton.inProgress(
-              label: l10n.signOutButtonLabel,
-            )
-          : ExpandedElevatedButton(
-              onTap: () {
-                final bloc = context.read<SettingsMenuBloc>();
-                bloc.add(
-                  const SettingsMenuSignedOut(),
-                );
-              },
-              label: l10n.signOutButtonLabel,
-              icon: const Icon(
-                Icons.logout,
-              ),
-            ),
     );
   }
 }
@@ -223,6 +189,12 @@ extension on DarkModePreference {
 }
 
 extension on LanguagePreference {
+  String toTitleCase() {
+    return name[0].toUpperCase() + name.substring(1).toLowerCase();
+  }
+}
+
+extension on ThemeSourcePreference {
   String toTitleCase() {
     return name[0].toUpperCase() + name.substring(1).toLowerCase();
   }
