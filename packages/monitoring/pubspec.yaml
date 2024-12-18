@@ -1,0 +1,25 @@
+name: monitoring
+publish_to: none
+
+environment:
+  sdk: '^3.6.0-334.4.beta'
+
+dependencies:
+  flutter: 
+    sdk: flutter
+  #firebase_auth: ^3.4.0
+  firebase_dynamic_links: ^6.0.9 #has been discontinued
+  cloud_firestore: ^5.4.5
+  firebase_analytics: ^11.3.4
+  firebase_core: ^3.7.0
+  firebase_crashlytics: ^4.1.4
+  firebase_dynamic_links_platform_interface: ^0.2.6+45
+  firebase_remote_config: ^5.1.4
+  #firebase_auth_web: ^3.3.18
+
+dev_dependencies:
+  test: ^1.25.8
+  lints: ^5.1.0
+
+dependency_overrides:
+  firebase_core_platform_interface: ^5.3.0
