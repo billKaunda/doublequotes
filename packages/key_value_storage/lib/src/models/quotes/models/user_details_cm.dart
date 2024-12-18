@@ -2,7 +2,7 @@ import 'package:hive_local_storage/hive_local_storage.dart';
 
 part 'user_details_cm.g.dart';
 
-@HiveType(typeId:7)
+@HiveType(typeId: 10)
 class UserDetailsCM {
   const UserDetailsCM({
     this.isFavorite,

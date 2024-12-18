@@ -8,7 +8,7 @@ part of 'user_details_cm.dart';
 
 class UserDetailsCMAdapter extends TypeAdapter<UserDetailsCM> {
   @override
-  final int typeId = 7;
+  final int typeId = 10;
 
   @override
   UserDetailsCM read(BinaryReader reader) {

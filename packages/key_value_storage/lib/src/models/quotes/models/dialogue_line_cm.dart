@@ -1,10 +1,10 @@
 import 'package:hive_local_storage/hive_local_storage.dart';
 
-part 'dialogue_lines_cm.g.dart';
+part 'dialogue_line_cm.g.dart';
 
-@HiveType(typeId: 8)
-class DialogueLinesCM {
-  const DialogueLinesCM({
+@HiveType(typeId: 6)
+class DialogueLineCM {
+  const DialogueLineCM({
     required this.author,
     required this.body,
   });

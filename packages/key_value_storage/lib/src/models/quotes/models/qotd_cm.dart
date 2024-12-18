@@ -3,7 +3,7 @@ import './quote_cm.dart';
 
 part 'qotd_cm.g.dart';
 
-@HiveType(typeId: 11)
+@HiveType(typeId: 7)
 class QotdCM {
   const QotdCM({
     required this.date,

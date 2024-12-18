@@ -8,7 +8,7 @@ part of 'qotd_cm.dart';
 
 class QotdCMAdapter extends TypeAdapter<QotdCM> {
   @override
-  final int typeId = 11;
+  final int typeId = 7;
 
   @override
   QotdCM read(BinaryReader reader) {

@@ -7,14 +7,17 @@ import 'quotes.dart';
 class QuotesKeyValueStorage {
   static const _qotdBoxKey = 'qotd';
   static const _quoteListPageBoxKey = 'quote-list-pages';
-  static const _favoritesListPageBoxKey = 'favorites-list-pages';
+  static const _favoriteQuotesListPageBoxKey = 'favorites-list-pages';
+  static const _hiddenQuotesListPageBoxKey = 'hidden-list-pages';
+  static const _privateQuotesListPageBoxKey = 'private-list-pages';
+
 
   QuotesKeyValueStorage({
     @visibleForTesting HiveInterface? hive,
   }) : _hive = hive ?? Hive {
     try {
       _hive
-        ..registerAdapter(DialogueLinesCMAdapter())
+        ..registerAdapter(DialogueLineCMAdapter())
         ..registerAdapter(QotdCMAdapter())
         ..registerAdapter(QuoteCMAdapter())
         ..registerAdapter(QuoteListPageCMAdapter())
@@ -34,12 +37,22 @@ class QuotesKeyValueStorage {
       _openQuotesHiveBox<QuoteListPageCM>(_quoteListPageBoxKey,
           isTemporary: true);
 
-  Future<Box<QuoteListPageCM>> get favoritesListPageBox =>
-      _openQuotesHiveBox<QuoteListPageCM>(_favoritesListPageBoxKey,
+  Future<Box<QuoteListPageCM>> get favoriteQuotesListPageBox =>
+      _openQuotesHiveBox<QuoteListPageCM>(_favoriteQuotesListPageBoxKey,
           isTemporary: true);
 
-  Future<Box<E>> _openQuotesHiveBox<E>(String boxKey,
-      {required bool isTemporary}) async {
+  Future<Box<QuoteListPageCM>> get hiddenQuotesListPageBox =>
+      _openQuotesHiveBox<QuoteListPageCM>(_hiddenQuotesListPageBoxKey,
+          isTemporary: true);
+  
+  Future<Box<QuoteListPageCM>> get privateQuotesListPageBox =>
+      _openQuotesHiveBox<QuoteListPageCM>(_privateQuotesListPageBoxKey,
+          isTemporary: true);
+
+  Future<Box<E>> _openQuotesHiveBox<E>(
+    String boxKey, {
+    required bool isTemporary,
+  }) async {
     if (_hive.isBoxOpen(boxKey)) {
       return _hive.box(boxKey);
     } else {

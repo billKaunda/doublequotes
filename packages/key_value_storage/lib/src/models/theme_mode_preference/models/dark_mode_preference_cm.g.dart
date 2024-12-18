@@ -8,7 +8,7 @@ part of 'dark_mode_preference_cm.dart';
 
 class DarkModePreferenceCMAdapter extends TypeAdapter<DarkModePreferenceCM> {
   @override
-  final int typeId = 6;
+  final int typeId = 11;
 
   @override
   DarkModePreferenceCM read(BinaryReader reader) {
@@ -16,8 +16,12 @@ class DarkModePreferenceCMAdapter extends TypeAdapter<DarkModePreferenceCM> {
       case 0:
         return DarkModePreferenceCM.dark;
       case 1:
-        return DarkModePreferenceCM.light;
+        return DarkModePreferenceCM.highContrastDark;
       case 2:
+        return DarkModePreferenceCM.highContrastLight;
+      case 3:
+        return DarkModePreferenceCM.light;
+      case 4:
         return DarkModePreferenceCM.accordingToSystemSettings;
       default:
         return DarkModePreferenceCM.dark;
@@ -30,11 +34,17 @@ class DarkModePreferenceCMAdapter extends TypeAdapter<DarkModePreferenceCM> {
       case DarkModePreferenceCM.dark:
         writer.writeByte(0);
         break;
-      case DarkModePreferenceCM.light:
+      case DarkModePreferenceCM.highContrastDark:
         writer.writeByte(1);
         break;
-      case DarkModePreferenceCM.accordingToSystemSettings:
+      case DarkModePreferenceCM.highContrastLight:
         writer.writeByte(2);
+        break;
+      case DarkModePreferenceCM.light:
+        writer.writeByte(3);
+        break;
+      case DarkModePreferenceCM.accordingToSystemSettings:
+        writer.writeByte(4);
         break;
     }
   }

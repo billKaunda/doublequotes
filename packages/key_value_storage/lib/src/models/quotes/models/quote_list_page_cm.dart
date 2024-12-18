@@ -3,7 +3,7 @@ import './quote_cm.dart';
 
 part 'quote_list_page_cm.g.dart';
 
-@HiveType(typeId: 10)
+@HiveType(typeId: 9)
 class QuoteListPageCM {
   const QuoteListPageCM({
     this.page,

@@ -8,7 +8,7 @@ part of 'filter_details_cm.dart';
 
 class FilterDetailsCMAdapter extends TypeAdapter<FilterDetailsCM> {
   @override
-  final int typeId = 12;
+  final int typeId = 14;
 
   @override
   FilterDetailsCM read(BinaryReader reader) {

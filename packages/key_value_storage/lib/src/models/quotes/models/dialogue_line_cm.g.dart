@@ -1,29 +1,29 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'dialogue_lines_cm.dart';
+part of 'dialogue_line_cm.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class DialogueLinesCMAdapter extends TypeAdapter<DialogueLinesCM> {
+class DialogueLineCMAdapter extends TypeAdapter<DialogueLineCM> {
   @override
-  final int typeId = 8;
+  final int typeId = 6;
 
   @override
-  DialogueLinesCM read(BinaryReader reader) {
+  DialogueLineCM read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return DialogueLinesCM(
+    return DialogueLineCM(
       author: fields[0] as String?,
       body: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, DialogueLinesCM obj) {
+  void write(BinaryWriter writer, DialogueLineCM obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
@@ -38,7 +38,7 @@ class DialogueLinesCMAdapter extends TypeAdapter<DialogueLinesCM> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is DialogueLinesCMAdapter &&
+      other is DialogueLineCMAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

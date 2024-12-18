@@ -2,13 +2,13 @@ name: key_value_storage
 publish_to: none
 
 environment:
-  sdk: '3.6.0-216.1.beta'
+  sdk: '3.6.0-334.4.beta'
 
 dependencies:
-  doublequotes:
-    path: ../../
+  meta: ^1.15.0
   hive_local_storage: ^1.1.1
   path_provider: ^2.1.4
+  hive: ^2.2.3
 
 
 dev_dependencies:

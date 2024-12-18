@@ -1,10 +1,10 @@
 import 'package:hive_local_storage/hive_local_storage.dart';
 import './user_details_cm.dart';
-import './dialogue_lines_cm.dart';
+import 'dialogue_line_cm.dart';
 
 part 'quote_cm.g.dart';
 
-@HiveType(typeId: 9)
+@HiveType(typeId: 8)
 class QuoteCM {
   const QuoteCM({
     required this.quoteId,
@@ -65,7 +65,7 @@ class QuoteCM {
   final UserDetailsCM? userDetails;
 
   @HiveField(13)
-  final List<DialogueLinesCM>? dialogueLines;
+  final List<DialogueLineCM>? dialogueLines;
 
   @HiveField(14)
   final String? source;

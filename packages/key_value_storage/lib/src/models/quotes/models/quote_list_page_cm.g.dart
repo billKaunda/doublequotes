@@ -8,7 +8,7 @@ part of 'quote_list_page_cm.dart';
 
 class QuoteListPageCMAdapter extends TypeAdapter<QuoteListPageCM> {
   @override
-  final int typeId = 10;
+  final int typeId = 9;
 
   @override
   QuoteListPageCM read(BinaryReader reader) {

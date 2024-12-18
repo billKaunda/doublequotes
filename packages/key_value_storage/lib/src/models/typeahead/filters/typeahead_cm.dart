@@ -3,7 +3,7 @@ import './filter_details_cm.dart';
 
 part 'typeahead_cm.g.dart';
 
-@HiveType(typeId: 13)
+@HiveType(typeId: 15)
 class TypeaheadCM {
   const TypeaheadCM({
     this.authors,

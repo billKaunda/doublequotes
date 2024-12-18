@@ -8,7 +8,7 @@ part of 'typeahead_cm.dart';
 
 class TypeaheadCMAdapter extends TypeAdapter<TypeaheadCM> {
   @override
-  final int typeId = 13;
+  final int typeId = 15;
 
   @override
   TypeaheadCM read(BinaryReader reader) {

@@ -2,7 +2,7 @@ import 'package:hive_local_storage/hive_local_storage.dart';
 
 part 'filter_details_cm.g.dart';
 
-@HiveType(typeId: 12)
+@HiveType(typeId: 14)
 class FilterDetailsCM {
   const FilterDetailsCM({
     this.count,
