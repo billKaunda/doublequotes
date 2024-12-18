@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "quotesBottomNavigationBarItemLabel" : "Quotes",
+    "@quotesBottomNavigationBarItemLabel":{
+        "description": "Label for the bottom navigation bar item which when tapped displays quotes."
+    },
+    "activityBottomNavigationBarItemLabel" : "Activity",
+    "@activityBottomNavigationBarItemLabel":{
+        "description": "Label for the bottom navigation bar item which when tapped displays the activity list."
+    },
+    "profileBottomNavigationBarItemLabel" : "Profile",
+    "@profileBottomNavigationBarItemLabel":{
+        "description": "Label for the bottom navigation bar item which when tapped displays the user's profile."
+    },
+    "settingsBottomNavigationBarItemLabel": "Settings",
+    "@settingsBottomNavigationBarItemLabel":{
+        "description": "Label for the bottom navigation bar item which when tapped displays app-wide settings."
+    }
+}

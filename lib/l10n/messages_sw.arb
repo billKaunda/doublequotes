@@ -1,0 +1,8 @@
+{
+  "@@locale": "sw",  
+  "quotesBottomNavigationBarItemLabel": "Nukuu",
+  "activityBottomNavigationBarItemLabel" : "Activity",
+  "profileBottomNavigationBarItemLabel": "Wasifu",
+  "settingsBottomNavigationBarItemLabel": "Settings"
+
+}
