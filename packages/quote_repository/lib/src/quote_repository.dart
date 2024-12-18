@@ -212,12 +212,12 @@ class QuoteRepository {
     return updatedCacheQuote.toRemoteModelAsync();
   }
 
-  Future<Quote> addPersonalTagToQuote(
+  Future<Quote> addPersonalTagsToQuote(
     int quoteId,
     List<String>? personalTags,
   ) async {
     final updatedCacheQuote = remoteQuotesApi
-        .addPersonalTagToQuote(quoteId, personalTags)
+        .addPersonalTagsToQuote(quoteId, personalTags)
         .toCacheUpdateFuture(
           _localStorage,
         );
@@ -255,7 +255,7 @@ class QuoteRepository {
   }
 
   Future<Quote> addDialogue(
-    List<DialogueLinesRequestRM> lines, {
+    List<DialogueLineRequestRM> lines, {
     String? source,
     String? context,
     List<String>? tags,
@@ -293,6 +293,26 @@ class QuoteRepository {
     return updatedCacheQuote.toRemoteModelAsync();
   }
 
+  Future<Quote> updateDialogue(
+    int quoteId,
+    List<DialogueLineRequestRM> lines, {
+    String? source,
+    String? context,
+    List<String>? tags,
+  }) async {
+    final updatedCacheQuote = remoteQuotesApi
+        .updateDialogue(
+          quoteId,
+          lines,
+          source: source,
+          context: context,
+          tags: tags,
+        )
+        .toCacheUpdateFuture(_localStorage);
+
+    return updatedCacheQuote.toRemoteModelAsync();
+  }
+
   Future<void> deleteQuote(int quoteId) async {
     final cachedQuote = await _localStorage.getQuote(quoteId);
 
@@ -320,6 +340,10 @@ class QuoteRepository {
             );
 
     return updatedCacheQuote.toRemoteModelAsync();
+  }
+
+  Future<void> clearCache() async {
+    await _localStorage.clear();
   }
 
   Future<QuoteListPageRM> _getQuoteListPageFromNetwork({
@@ -389,7 +413,7 @@ class QuoteRepository {
         );
       }
 
-      //If not storing on cache, then forward to domain model
+      //If not storing on cache, then return the network page
       return apiPage;
     } on UserSessionNotFoundFavQsException {
       throw UserSessionNotFound();

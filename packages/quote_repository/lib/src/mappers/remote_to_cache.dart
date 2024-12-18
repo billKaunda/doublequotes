@@ -1,9 +1,9 @@
 import 'package:fav_qs_api_v2/fav_qs_api_v2.dart';
 import 'package:key_value_storage/key_value_storage.dart';
 
-extension DialogueLinesRMToCM on DialogueLinesRM {
-  DialogueLinesCM toCacheModel() {
-    return DialogueLinesCM(
+extension DialogueLinesRMToCM on DialogueLineRM {
+  DialogueLineCM toCacheModel() {
+    return DialogueLineCM(
       author: author,
       body: body,
     );

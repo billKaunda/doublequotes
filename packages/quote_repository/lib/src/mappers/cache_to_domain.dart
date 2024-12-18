@@ -1,9 +1,9 @@
 import 'package:key_value_storage/key_value_storage.dart';
 import 'package:domain_models/domain_models.dart';
 
-extension DialogueLinesCMToDomain on DialogueLinesCM {
-  DialogueLines toDomainModel() {
-    return DialogueLines(
+extension DialogueLinesCMToDomain on DialogueLineCM {
+  DialogueLine toDomainModel() {
+    return DialogueLine(
       author: author,
       body: body,
     );
@@ -53,9 +53,9 @@ extension QuoteCMToDomain on QuoteCM {
 extension UserDetailsCMToDomain on UserDetailsCM {
   UserDetails toDomainModel() {
     return UserDetails(
-      isFavorite: isFavorite,
-      isUpvoted: isUpvoted,
-      isDownvoted: isDownvoted,
+      isFavorite: isFavorite!,
+      isUpvoted: isUpvoted!,
+      isDownvoted: isDownvoted!,
       isHidden: isHidden,
       personalTags: personalTags,
     );

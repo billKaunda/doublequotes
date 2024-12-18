@@ -2,7 +2,7 @@ name: quote_repository
 publish_to: none
 
 environment:
-  sdk: ^3.6.0-216.1.beta
+  sdk: ^3.6.0-334.4.beta
 
 dependencies:
   fav_qs_api_v2:
@@ -11,8 +11,7 @@ dependencies:
     path: ../key_value_storage
   domain_models:
     path: ../domain_models
-  doublequotes:
-    path: ../../
+  meta: ^1.15.0
 
 dev_dependencies:
   lints: ^5.1.0

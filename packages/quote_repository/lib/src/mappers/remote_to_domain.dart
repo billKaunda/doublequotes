@@ -1,9 +1,9 @@
 import 'package:fav_qs_api_v2/fav_qs_api_v2.dart';
 import 'package:domain_models/domain_models.dart';
 
-extension DialogueLinesRMToDomain on DialogueLinesRM {
-  DialogueLines toDomainModel() {
-    return DialogueLines(
+extension DialogueLinesRMToDomain on DialogueLineRM {
+  DialogueLine toDomainModel() {
+    return DialogueLine(
       author: author,
       body: body,
     );
@@ -53,9 +53,9 @@ extension QuoteRMToDomain on QuoteRM {
 extension UserDetailsRMToDomain on UserDetailsRM {
   UserDetails toDomainModel() {
     return UserDetails(
-      isFavorite: isFavorite,
-      isUpvoted: isUpvoted,
-      isDownvoted: isDownvoted,
+      isFavorite: isFavorite!,
+      isUpvoted: isUpvoted!,
+      isDownvoted: isDownvoted!,
       isHidden: isHidden,
       personalTags: personalTags,
     );
