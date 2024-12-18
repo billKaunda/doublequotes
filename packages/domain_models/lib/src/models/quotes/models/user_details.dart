@@ -2,18 +2,18 @@ import 'package:equatable/equatable.dart';
 
 class UserDetails extends Equatable {
   const UserDetails({
-    this.isFavorite,
-    this.isUpvoted,
-    this.isDownvoted,
+    required this.isFavorite,
+    required this.isUpvoted,
+    required this.isDownvoted,
     this.isHidden,
     this.personalTags,
   });
 
-  final bool? isFavorite;
+  final bool isFavorite;
 
-  final bool? isUpvoted;
+  final bool isUpvoted;
 
-  final bool? isDownvoted;
+  final bool isDownvoted;
 
   final bool? isHidden;
 

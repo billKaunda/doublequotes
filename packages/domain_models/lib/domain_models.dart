@@ -1,7 +1,10 @@
 export 'src/models/activity/activity_models.dart';
 export 'src/models/quotes/quotes_models.dart';
 export 'src/models/typeahead/typeahead_models.dart';
-export 'src/models/dark_mode_preference.dart';
+export 'src/models/theme_mode_preference/theme_mode_preference_models.dart';
 export 'src/models/domain_models_exceptions.dart';
-export 'src/models/tag.dart';
-export 'src/models/user.dart';
+export 'src/models/type_lookup.dart';
+export 'src/models/users/account_details.dart';
+export 'src/models/users/update_user.dart';
+export 'src/models/users/user_credentials.dart';
+export 'src/models/users/user.dart';

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import './user_details.dart';
-import './dialogue_lines.dart';
+import 'dialogue_line.dart';
 
 class Quote extends Equatable {
   const Quote({
@@ -48,7 +48,7 @@ class Quote extends Equatable {
 
   final UserDetails? userDetails;
 
-  final List<DialogueLines>? dialogueLines;
+  final List<DialogueLine>? dialogueLines;
 
   final String? source;
 
