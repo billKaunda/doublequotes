@@ -1,0 +1,31 @@
+<variant
+    name="release"
+    package="io.flutter.plugins.firebase.analytics"
+    minSdkVersion="21"
+    targetSdkVersion="21"
+    mergedManifest="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/intermediates/merged_manifest/release/processReleaseManifest/AndroidManifest.xml"
+    proguardFiles="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/intermediates/default_proguard_files/global/proguard-android.txt-8.6.0"
+    partialResultsDir="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out"
+    desugaredMethodsFiles="/home/bill/.gradle/caches/8.10/transforms/5a65923edc92678c2da94666e0e73a54/transformed/D8BackportedDesugaredMethods.txt">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
+        resDirectories="src/main/res:src/release/res"
+        assetsDirectories="src/main/assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <artifact
+      classOutputs="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/intermediates/javac/release/compileReleaseJavaWithJavac/classes:/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/intermediates/compile_r_class_jar/release/generateReleaseRFile/R.jar"
+      type="MAIN"
+      applicationId="io.flutter.plugins.firebase.analytics"
+      generatedSourceFolders="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/generated/ap_generated_sources/release/out:/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/generated/source/buildConfig/release"
+      generatedResourceFolders="/home/bill/learningFlutter/real_world/doublequotes/build/firebase_analytics/generated/res/resValues/release"
+      desugaredMethodsFiles="/home/bill/.gradle/caches/8.10/transforms/5a65923edc92678c2da94666e0e73a54/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>

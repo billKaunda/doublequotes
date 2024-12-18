@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "845955239125",
+    "project_id": "doublequotes-c7c55",
+    "storage_bucket": "doublequotes-c7c55.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845955239125:android:d6f90c112aa867ffd1265c",
+        "android_client_info": {
+          "package_name": "com.marad.doublequotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3w6UiLi0thudx22Ls0PEN798A-78kRVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

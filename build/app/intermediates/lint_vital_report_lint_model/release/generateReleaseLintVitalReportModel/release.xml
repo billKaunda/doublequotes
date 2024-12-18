@@ -1,0 +1,37 @@
+<variant
+    name="release"
+    package="com.marad.doublequotes"
+    minSdkVersion="24"
+    targetSdkVersion="35"
+    shrinking="true"
+    mergedManifest="/home/bill/learningFlutter/real_world/doublequotes/build/app/intermediates/merged_manifest/release/processReleaseMainManifest/AndroidManifest.xml"
+    manifestMergeReport="/home/bill/learningFlutter/real_world/doublequotes/build/app/outputs/logs/manifest-merger-release-report.txt"
+    proguardFiles="/home/bill/learningFlutter/real_world/doublequotes/build/app/intermediates/default_proguard_files/global/proguard-android-optimize.txt-8.6.0:/home/bill/snap/flutter/common/flutter/packages/flutter_tools/gradle/flutter_proguard_rules.pro:proguard-rules.pro"
+    partialResultsDir="/home/bill/learningFlutter/real_world/doublequotes/build/app/intermediates/lint_vital_partial_results/release/lintVitalAnalyzeRelease/out">
+  <buildFeatures
+      namespacing="REQUIRED"/>
+  <sourceProviders>
+    <sourceProvider
+        manifests="src/main/AndroidManifest.xml"
+        javaDirectories="src/main/java:src/release/java:src/main/kotlin:src/release/kotlin"
+        resDirectories="src/main/res:src/release/res"
+        assetsDirectories="src/main/assets:src/release/assets"/>
+  </sourceProviders>
+  <testSourceProviders>
+  </testSourceProviders>
+  <testFixturesSourceProviders>
+  </testFixturesSourceProviders>
+  <manifestPlaceholders>
+    <placeholder
+        name="applicationName"
+        value="android.app.Application" />
+  </manifestPlaceholders>
+  <artifact
+      classOutputs="/home/bill/learningFlutter/real_world/doublequotes/build/app/intermediates/javac/release/compileReleaseJavaWithJavac/classes:/home/bill/learningFlutter/real_world/doublequotes/build/app/tmp/kotlin-classes/release:/home/bill/learningFlutter/real_world/doublequotes/build/app/kotlinToolingMetadata:/home/bill/learningFlutter/real_world/doublequotes/build/app/intermediates/compile_and_runtime_not_namespaced_r_class_jar/release/processReleaseResources/R.jar"
+      type="MAIN"
+      applicationId="com.marad.doublequotes"
+      generatedSourceFolders="/home/bill/learningFlutter/real_world/doublequotes/build/app/generated/ap_generated_sources/release/out"
+      generatedResourceFolders="/home/bill/learningFlutter/real_world/doublequotes/build/app/generated/res/processReleaseGoogleServices:/home/bill/learningFlutter/real_world/doublequotes/build/app/generated/res/resValues/release"
+      desugaredMethodsFiles="/home/bill/.gradle/caches/8.10/transforms/74bf7b03cb9ed4cec74c5efcd1164c41/transformed/D8BackportedDesugaredMethods.txt">
+  </artifact>
+</variant>
