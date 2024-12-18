@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:fav_qs_api_v2/src/dio_extensions.dart';
+import 'package:fav_qs_api_v2/src/extensions.dart';
 import 'package:fav_qs_api_v2/src/fav_qs_api_v2_exceptions.dart';
 
 import './models/quote_models.dart';
@@ -87,33 +87,6 @@ class QuotesApiSection {
     }
   }
 
-  //Helper function to submit HTTP PUT requests to perform a given
-  // action on a quote object.
-  Future<QuoteRM> _performQuoteAction(String url) async {
-    final response = await _dio.put(url);
-    final jsonObject = response.data;
-
-    try {
-      final quote = QuoteRM.fromJson(jsonObject);
-      return quote;
-    } catch (error) {
-      final int errorCode = jsonObject[_errorCodeJsonKey];
-      switch (errorCode) {
-        case 20:
-          throw UserSessionNotFoundFavQsException();
-        case 24:
-          throw ProUserRequiredFavQsException();
-        case 40:
-          throw QuoteNotFoundFavQsException();
-        case 41:
-          throw CannotUnfavPrivateQuotesFavQsException();
-        default:
-          break;
-      }
-      rethrow;
-    }
-  }
-
   Future<QuoteRM> favoriteQuote(int quoteId) {
     final url = _quotesUrlBuilder.buildFavoriteQuoteUrl(quoteId);
     return _performQuoteAction(url);
@@ -139,19 +112,18 @@ class QuotesApiSection {
     return _performQuoteAction(url);
   }
 
-  Future<QuoteRM> addPersonalTagToQuote(
+  Future<QuoteRM> addPersonalTagsToQuote(
     int quoteId,
-    List<PersonalTagRM> personalTags,
+    List<String>? personalTags,
   ) async {
     final url = _quotesUrlBuilder.buildAddPersonalTagToQuoteUrl(quoteId);
     final selectedQuote = await getQuote(quoteId);
     final existingTags = selectedQuote.userDetails?.personalTags;
-    final updatedTags =
-        [...?existingTags, ...personalTags] as List<PersonalTagRM>;
-    final requestJsonBody = QuoteRequestRM(
-      quoteId: quoteId,
-      userDetails: UserDetailsRequestRM(personalTags: updatedTags),
-    ).toJson();
+    final List<String> updatedTags = [
+      ...existingTags ?? [],
+      ...personalTags ?? []
+    ];
+    final requestJsonBody = PersonalTagsRM(personalTags: updatedTags).toJson();
 
     final response = await _dio.put(url, data: requestJsonBody);
     final jsonObject = response.data;
@@ -163,6 +135,8 @@ class QuotesApiSection {
       final int errorCode = jsonObject[_errorCodeJsonKey];
       if (errorCode == 20) {
         throw UserSessionNotFoundFavQsException();
+      } else if (errorCode == 40) {
+        throw QuoteNotFoundFavQsException();
       }
       //rethrow for other unhandled exceptions
       rethrow;
@@ -206,13 +180,18 @@ class QuotesApiSection {
   }
 
   Future<QuoteRM> addDialogue(
-    int quoteId,
-    List<DialogueLinesRequestRM> lines,
-  ) async {
+    List<DialogueLineRequestRM>? lines, {
+    String? source,
+    String? context,
+    List<String>? tags,
+  }) async {
     final url = _quotesUrlBuilder.buildAddQuoteOrDialogueUrl();
     final requestJsonBody = QuoteRequestRM(
-      quoteId: quoteId,
       dialogueLines: lines,
+      source: source,
+      context: context,
+      //TODO Compare the value for tags in adding a dialogue and normal quote JSON
+      tags: tags,
     ).toJson();
     final response = await _dio.post(url, data: requestJsonBody);
     final jsonObject = response.data;
@@ -235,13 +214,12 @@ class QuotesApiSection {
   }
 
   Future<QuoteRM> updateQuote(
-    int quoteId,
+    int quoteId, {
     String? author,
     String? body,
-  ) async {
+  }) async {
     final url = _quotesUrlBuilder.buildUpdateQuoteOrDialogueUrl(quoteId);
     final requestJsonBody = QuoteRequestRM(
-      quoteId: quoteId,
       author: author,
       body: body,
     ).toJson();
@@ -267,12 +245,17 @@ class QuotesApiSection {
 
   Future<QuoteRM> updateDialogue(
     int quoteId,
-    List<DialogueLinesRequestRM> lines,
-  ) async {
+    List<DialogueLineRequestRM> lines, {
+    String? source,
+    String? context,
+    List<String>? tags,
+  }) async {
     final url = _quotesUrlBuilder.buildUpdateQuoteOrDialogueUrl(quoteId);
-    final requestJsonBody = QuoteRequestRM(
-      quoteId: quoteId,
-      dialogueLines: lines,
+    final requestJsonBody = DialogueRequestRM(
+      lines: lines,
+      source: source,
+      context: context,
+      tags: tags.toString(),
     ).toJson();
     final response = await _dio.put(url, data: requestJsonBody);
     final jsonObject = response.data;
@@ -320,6 +303,33 @@ class QuotesApiSection {
         default:
           break;
       }
+    }
+  }
+
+  //Helper function to submit HTTP PUT requests to perform a given
+  // action on a quote object.
+  Future<QuoteRM> _performQuoteAction(String url) async {
+    final response = await _dio.put(url);
+    final jsonObject = response.data;
+
+    try {
+      final quote = QuoteRM.fromJson(jsonObject);
+      return quote;
+    } catch (error) {
+      final int errorCode = jsonObject[_errorCodeJsonKey];
+      switch (errorCode) {
+        case 20:
+          throw UserSessionNotFoundFavQsException();
+        case 24:
+          throw ProUserRequiredFavQsException();
+        case 40:
+          throw QuoteNotFoundFavQsException();
+        case 41:
+          throw CannotUnfavPrivateQuotesFavQsException();
+        default:
+          break;
+      }
+      rethrow;
     }
   }
 }

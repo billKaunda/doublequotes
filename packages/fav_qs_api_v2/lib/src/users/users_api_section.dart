@@ -1,7 +1,7 @@
 import 'package:meta/meta.dart';
 
 import 'package:dio/dio.dart';
-import 'package:fav_qs_api_v2/src/dio_extensions.dart';
+import 'package:fav_qs_api_v2/src/extensions.dart';
 import 'package:fav_qs_api_v2/src/fav_qs_api_v2_exceptions.dart';
 import './models/users_models.dart';
 
@@ -25,7 +25,7 @@ class UsersApiSection {
   final Dio _dio;
   final UsersUrlBuilder _usersUrlBuilder;
 
-  Future<String> signUpUrl(
+  Future<String> signUp(
     String username,
     String email,
     String password,
@@ -87,7 +87,6 @@ class UsersApiSection {
     String? twitterUsername,
     String? facebookUsername,
     String? pic,
-    String? picUrl,
     bool? enableProfanityFilter,
   }) async {
     final url = _usersUrlBuilder.buildUpdateUserUrl();
@@ -99,7 +98,6 @@ class UsersApiSection {
       twitterUsername: twitterUsername,
       facebookUsername: facebookUsername,
       pic: pic,
-      picUrl: picUrl,
       enableProfanityFilter: enableProfanityFilter,
     )).toJson();
 
@@ -118,7 +116,9 @@ class UsersApiSection {
   Future<void> forgotPasswordRequest(String email) async {
     final url = _usersUrlBuilder.buildForgotPasswordUrl();
     final requestJsonBody = ForgotPasswordRequestRM(
-      user: UserRequestRM(email: email),
+      user: UserRequestRM(
+        email: email,
+      ),
     ).toJson();
 
     final response = await _dio.post(url, data: requestJsonBody);
@@ -161,9 +161,9 @@ class UsersApiSection {
     }
   }
 
+  //TODO Open the link in a web view for one to purchase a 1-yr FavQs Pro sub
   Future<void> becomeProUser() async {
     final url = _usersUrlBuilder.buildBecomeProUserUrl();
-    //TODO Open the link in a web view for one to purchase a 1-yr FavQs Pro sub
   }
 
   void _userValidationErrorsChecker(String message) {

@@ -1,3 +1,5 @@
+import '../extensions.dart';
+
 class ActivityUrlBuilder {
   const ActivityUrlBuilder({
     String? baseUrl,
@@ -23,13 +25,15 @@ class ActivityUrlBuilder {
 
     final pageQueryStringPart = page != null ? '&page=$page' : '';
 
-    final usernameQueryStringPart =
-        username != null ? '?type=user&filter=$username' : '';
+    final usernameQueryStringPart = username != null
+        ? '?type=user&filter=${username.toUrlParameter()}'
+        : '';
 
     final authorQueryStringPart =
-        author != null ? '?type=author&filter=$author' : '';
+        author != null ? '?type=author&filter=${author.toUrlParameter()}' : '';
 
-    final tagQueryStringPart = tag != null ? '?type=tag&filter=$tag' : '';
+    final tagQueryStringPart =
+        tag != null ? '?type=tag&filter=${tag.toUrlParameter()}' : '';
 
     return '$_baseUrl/$activityQueryStringPart/$usernameQueryStringPart$authorQueryStringPart$tagQueryStringPart$pageQueryStringPart';
   }
@@ -47,26 +51,49 @@ class ActivityUrlBuilder {
         username: username,
         tag: tag,
       );
-  String buildFollowUrl() => coreActivityUrl('follow');
+  String buildFollowUrl({
+    String? author,
+    String? tag,
+    String? username,
+  }) =>
+      coreActivityUrl(
+        'follow',
+        author: author,
+        tag: tag,
+        username: username,
+      );
 
-  String buildUnfollowUrl() => coreActivityUrl('unfollow');
+  String buildUnfollowUrl({
+    String? author,
+    String? tag,
+    String? username,
+  }) =>
+      coreActivityUrl(
+        'unfollow',
+        author: author,
+        tag: tag,
+        username: username,
+      );
 
   String buildGetFollowersUrl({
+    int? page,
     String? author,
     String? username,
     String? tag,
   }) =>
       coreActivityUrl(
         'followers',
+        page: page,
         author: author,
         username: username,
         tag: tag,
       );
 
   String buildGetFollowingUrl({
+    int? page,
     String? username,
   }) =>
-      coreActivityUrl('following', username: username);
+      coreActivityUrl('following', page: page, username: username);
 
   String buildDeleteActivityUrl(int activityId) {
     return '$_baseUrl/:$activityId';

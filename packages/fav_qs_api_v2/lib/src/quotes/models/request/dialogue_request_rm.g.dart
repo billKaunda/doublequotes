@@ -1,12 +1,15 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tag_request_rm.dart';
+part of 'dialogue_request_rm.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$TagRequestRMToJson(TagRequestRM instance) =>
+Map<String, dynamic> _$DialogueRequestRMToJson(DialogueRequestRM instance) =>
     <String, dynamic>{
-      'tag': instance.tag,
+      'lines': instance.lines,
+      'source': instance.source,
+      'context': instance.context,
+      'tags': instance.tags,
     };

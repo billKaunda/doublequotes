@@ -14,21 +14,12 @@ FollowersListPageRM _$FollowersListPageRMFromJson(Map<String, dynamic> json) =>
         final val = FollowersListPageRM(
           page: $checkedConvert('page', (v) => (v as num?)?.toInt()),
           isLastPage: $checkedConvert('last_page', (v) => v as bool?),
-          users: $checkedConvert(
-              'users',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) => UserNameRM.fromJson(e as Map<String, dynamic>))
-                  .toList()),
-          authors: $checkedConvert(
-              'authors',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) => AuthorRM.fromJson(e as Map<String, dynamic>))
-                  .toList()),
-          tags: $checkedConvert(
-              'tags',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) => TagRM.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          users: $checkedConvert('users',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+          authors: $checkedConvert('authors',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
+          tags: $checkedConvert('tags',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
         );
         return val;
       },

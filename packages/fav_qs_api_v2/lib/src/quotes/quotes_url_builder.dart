@@ -1,10 +1,12 @@
+import '../extensions.dart';
+
 class QuotesUrlBuilder {
   const QuotesUrlBuilder({
     String? baseUrl,
-  }) : _baseUrl = baseUrl ?? 'https://favqs.com/api/quotes';
+  }) : _baseUrl = baseUrl ?? 'https://favqs.com/api/quotes/';
 
   final String _baseUrl;
-
+  /*
   String buildGetQuoteListPageUrl({
     int? page,
     String? searchTerm,
@@ -15,27 +17,88 @@ class QuotesUrlBuilder {
     String? favoritedByUsername,
   }) {
     final searchTermQueryStringPart =
-        searchTerm != null ? '?filter=$searchTerm' : '';
+        searchTerm != null ? '?filter=${searchTerm.toUrlParameter()}' : '';
 
-    final tagQueryStringPart = tag != null ? '?filter=$tag&type=tag' : '';
+    final tagQueryStringPart =
+        tag != null ? '?filter=${tag.toUrlParameter()}&type=tag' : '';
 
     final authorQueryStringPart =
-        author != null ? '?filter=$author&type=author' : '';
+        author != null ? '?filter=${author.toUrlParameter()}&type=author' : '';
 
     final favoritedByUsernameQueryStringPart = favoritedByUsername != null
-        ? '?filter=$favoritedByUsername&type=user'
+        ? '?filter=${favoritedByUsername.toUrlParameter()}&type=user'
         : '';
 
     final privateQuotesWithSearchTermQueryStringPart = searchTerm != null
-        ? '?filter=$searchTerm&private=$privateQuotesByProUser'
-        : '?private=$privateQuotesByProUser';
+        ? '?filter=${searchTerm.toUrlParameter()}&private=${privateQuotesByProUser?.toUrlParameter()}'
+        : '?private=${privateQuotesByProUser?.toUrlParameter()}';
 
-    final hiddenByUsernameQueryStringPart =
-        hiddenByUsername != null ? '?hidden=$hiddenByUsername' : '';
+    final hiddenByUsernameQueryStringPart = hiddenByUsername != null
+        ? '?hidden=${hiddenByUsername.toUrlParameter()}'
+        : '';
 
     final pageQueryStringPart = page != null ? '&page=$page' : '';
 
-    return '$_baseUrl/$searchTermQueryStringPart$tagQueryStringPart$authorQueryStringPart$favoritedByUsernameQueryStringPart$privateQuotesWithSearchTermQueryStringPart$hiddenByUsernameQueryStringPart$pageQueryStringPart';
+    if (searchTermQueryStringPart.isNotEmpty &&
+        (tagQueryStringPart.isNotEmpty ||
+            authorQueryStringPart.isNotEmpty ||
+            favoritedByUsernameQueryStringPart.isNotEmpty)) {
+      return '$_baseUrl/$tagQueryStringPart$authorQueryStringPart$favoritedByUsernameQueryStringPart$privateQuotesWithSearchTermQueryStringPart$hiddenByUsernameQueryStringPart$pageQueryStringPart';
+    } else {
+      return '$_baseUrl/$tagQueryStringPart$authorQueryStringPart$favoritedByUsernameQueryStringPart$privateQuotesWithSearchTermQueryStringPart$hiddenByUsernameQueryStringPart$pageQueryStringPart';
+    }
+  }
+  */
+
+  String buildGetQuoteListPageUrl({
+    int? page,
+    String? searchTerm,
+    String? tag,
+    String? author,
+    bool? hiddenByUsername,
+    bool? privateQuotesByProUser,
+    String? favoritedByUsername,
+  }) {
+    final queryParams = <String, String>{};
+
+    if (searchTerm != null) {
+      queryParams['filter'] = searchTerm;
+    } else if (privateQuotesByProUser == true) {
+      queryParams['private'] = '1';
+    }
+
+    if (tag != null) {
+      //queryParams['filter'] = tag;
+      queryParams['type'] = 'tag';
+    }
+
+    if (author != null) {
+      queryParams['type'] = 'author';
+    }
+
+    if (favoritedByUsername != null) {
+      queryParams['type'] = 'user';
+    }
+
+    if (hiddenByUsername == true) {
+      queryParams['hidden'] = '1';
+    }
+    /*
+    if (page != null) {
+      queryParams['page'] = '$page';
+    }
+    */
+    if (privateQuotesByProUser == true) {
+      queryParams['private'] = '1';
+    }
+
+    // Build the query string from queryParams.
+    final queryString = queryParams.entries
+        .map((entry) =>
+            '${Uri.encodeComponent(entry.key)}=${entry.value.replaceAll(RegExp(r' '), '+').toLowerCase()}')
+        .join('&');
+
+    return '$_baseUrl${queryString.isNotEmpty ? '?$queryString' : ''}';
   }
 
   //TODO To be implemented as a pop up notification

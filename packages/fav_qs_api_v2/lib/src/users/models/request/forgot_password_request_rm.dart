@@ -11,6 +11,6 @@ class ForgotPasswordRequestRM {
 
   @JsonKey(name: 'user')
   final UserRequestRM user;
-  
+
   Map<String, dynamic> toJson() => _$ForgotPasswordRequestRMToJson(this);
 }

@@ -1,7 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
-import './tag_rm.dart';
 import 'user_details_rm.dart';
-import './dialogue_lines_rm.dart';
+import 'dialogue_line_rm.dart';
 
 part 'quote_rm.g.dart';
 
@@ -39,7 +38,7 @@ class QuoteRM {
   final bool? isFavorite;
 
   @JsonKey(name: 'tags')
-  final List<TagRM>? tags;
+  final List<String>? tags;
 
   @JsonKey(name: 'url')
   final String? quoteUrl;
@@ -66,7 +65,7 @@ class QuoteRM {
   final UserDetailsRM? userDetails;
 
   @JsonKey(name: 'lines')
-  final List<DialogueLinesRM>? dialogueLines;
+  final List<DialogueLineRM>? dialogueLines;
 
   @JsonKey(name: 'source')
   final String? source;

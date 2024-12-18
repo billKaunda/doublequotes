@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
-import 'package:fav_qs_api_v2/src/dio_extensions.dart';
+import 'package:fav_qs_api_v2/src/extensions.dart';
 import 'package:fav_qs_api_v2/src/fav_qs_api_v2_exceptions.dart';
 
 import './activity_url_builder.dart';
@@ -39,11 +39,13 @@ class ActivityApiSection {
   }
 
   Future<FollowersListPageRM> getFollowersListPage({
+    int? page,
     String? author,
     String? username,
     String? tag,
   }) async {
     final url = _activityUrlBuilder.buildGetFollowersUrl(
+      page: page,
       author: author,
       username: username,
       tag: tag,
@@ -53,22 +55,39 @@ class ActivityApiSection {
   }
 
   Future<FollowingListPageRM> getFollowingListPage({
+    int? page,
     String? username,
   }) async {
-    final url = _activityUrlBuilder.buildGetFollowingUrl(username: username);
+    final url = _activityUrlBuilder.buildGetFollowingUrl(
+        page: page, username: username);
 
     return _buildListPage(url, FollowingListPageRM) as FollowingListPageRM;
   }
 
-  //TODO User a future in the return type or not?
-  void followUserTagOrAuthor() {
-    final url = _activityUrlBuilder.buildFollowUrl();
-    _perfomActivityAction(url);
+  Future<void> followEntity({
+    String? author,
+    String? tag,
+    String? username,
+  }) {
+    final url = _activityUrlBuilder.buildFollowUrl(
+      author: author,
+      tag: tag,
+      username: username,
+    );
+    return _perfomActivityAction(url);
   }
 
-  void unfollowUserTagOrAuthor() {
-    final url = _activityUrlBuilder.buildUnfollowUrl();
-    _perfomActivityAction(url);
+  Future<void> unfollowEntity({
+    String? author,
+    String? tag,
+    String? username,
+  }) {
+    final url = _activityUrlBuilder.buildUnfollowUrl(
+      author: author,
+      tag: tag,
+      username: username,
+    );
+    return _perfomActivityAction(url);
   }
 
   Future<void> deleteActivity(int activityId) async {

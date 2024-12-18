@@ -1,16 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_rm.dart';
+part of 'user_session_rm.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-UserRM _$UserRMFromJson(Map<String, dynamic> json) => $checkedCreate(
-      'UserRM',
+UserSessionRM _$UserSessionRMFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'UserSessionRM',
       json,
       ($checkedConvert) {
-        final val = UserRM(
+        final val = UserSessionRM(
           userToken: $checkedConvert('User-Token', (v) => v as String),
           userCredentials: $checkedConvert('userCredentials',
               (v) => UserCredentialsRM.fromJson(v as Map<String, dynamic>)),

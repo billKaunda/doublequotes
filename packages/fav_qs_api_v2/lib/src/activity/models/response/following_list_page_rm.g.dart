@@ -14,7 +14,7 @@ FollowingListPageRM _$FollowingListPageRMFromJson(Map<String, dynamic> json) =>
         final val = FollowingListPageRM(
           page: $checkedConvert('page', (v) => (v as num?)?.toInt()),
           isLastPage: $checkedConvert('last_page', (v) => v as bool?),
-          following: $checkedConvert(
+          followingItems: $checkedConvert(
               'following',
               (v) => (v as List<dynamic>?)
                   ?.map((e) =>
@@ -23,5 +23,8 @@ FollowingListPageRM _$FollowingListPageRMFromJson(Map<String, dynamic> json) =>
         );
         return val;
       },
-      fieldKeyMap: const {'isLastPage': 'last_page'},
+      fieldKeyMap: const {
+        'isLastPage': 'last_page',
+        'followingItems': 'following'
+      },
     );

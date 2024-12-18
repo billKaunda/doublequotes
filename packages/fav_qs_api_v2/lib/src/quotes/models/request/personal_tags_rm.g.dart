@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'personal_tag_rm.dart';
+part of 'personal_tags_rm.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-Map<String, dynamic> _$PersonalTagRMToJson(PersonalTagRM instance) =>
+Map<String, dynamic> _$PersonalTagsRMToJson(PersonalTagsRM instance) =>
     <String, dynamic>{
-      'personalTag': instance.personalTag,
+      'personal_tags': instance.personalTags,
     };

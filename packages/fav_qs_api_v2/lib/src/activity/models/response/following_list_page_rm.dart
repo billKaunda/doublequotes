@@ -8,7 +8,7 @@ class FollowingListPageRM {
   const FollowingListPageRM({
     this.page,
     this.isLastPage,
-    this.following,
+    this.followingItems,
   });
 
   @JsonKey(name: 'page')
@@ -18,7 +18,7 @@ class FollowingListPageRM {
   final bool? isLastPage;
 
   @JsonKey(name: 'following')
-  final List<FollowingItemRM>? following;
+  final List<FollowingItemRM>? followingItems;
 
   static const fromJson = _$FollowingListPageRMFromJson;
 }

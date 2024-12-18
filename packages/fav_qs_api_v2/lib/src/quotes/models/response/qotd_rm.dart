@@ -6,12 +6,12 @@ part 'qotd_rm.g.dart';
 @JsonSerializable(createToJson: false)
 class QotdRM {
   const QotdRM({
-    required this.qotdDate,
+    required this.date,
     required this.quote,
   });
 
   @JsonKey(name: 'qotd_date')
-  final String qotdDate;
+  final String date;
 
   @JsonKey(name: 'quote')
   final QuoteRM quote;

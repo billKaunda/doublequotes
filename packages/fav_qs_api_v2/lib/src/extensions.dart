@@ -7,8 +7,7 @@ extension DioExtensions on Dio {
   static const _appTokenEnvironmentVariableKey = 'fav-qs-app-token';
 
   void setUpAuthHeaders(UserSessionTokenSupplier? userSessionTokenSupplier) {
-    final appToken =
-        const String.fromEnvironment(_appTokenEnvironmentVariableKey);
+    const appToken = String.fromEnvironment(_appTokenEnvironmentVariableKey);
 
     options = BaseOptions(
       headers: {
@@ -66,7 +65,8 @@ extension DioExtensions on Dio {
               //a user session
               (((options.method.toUpperCase() == 'GET' ||
                       options.method.toUpperCase() == 'PUT')) &&
-                  (options.baseUrl.toLowerCase() == '$_baseUrl/users/:login')) ||
+                  (options.baseUrl.toLowerCase() ==
+                      '$_baseUrl/users/:login')) ||
               (options.method.toUpperCase() == 'GET' &&
                   queryParamRequiresUserSession(options.queryParameters))) {
             String? userSessionToken = await userSessionTokenSupplier?.call();
@@ -80,5 +80,20 @@ extension DioExtensions on Dio {
         },
       ),
     );
+  }
+}
+
+extension StringToUrlParameter on String {
+  //Converts the string into a format suitable for a URL parameter.
+  // Replaces spaces with `+`
+  // - Encodes special characters.
+  String toUrlParameter() {
+    return Uri.encodeComponent(trim()).replaceAll(RegExp(r' '), '+').toLowerCase();
+  }
+}
+
+extension BoolToUrlParameter on bool {
+  String toUrlParameter() {
+    return this ? '1' : '0';
   }
 }

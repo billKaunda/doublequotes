@@ -1,7 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import './user_name_rm.dart';
-import './author_rm.dart';
-import './tag_rm.dart';
 
 part 'followers_list_page_rm.g.dart';
 
@@ -22,13 +19,13 @@ class FollowersListPageRM {
   final bool? isLastPage;
 
   @JsonKey(name: 'users')
-  final List<UserNameRM>? users;
+  final List<String>? users;
 
   @JsonKey(name: 'authors')
-  final List<AuthorRM>? authors;
+  final List<String>? authors;
 
   @JsonKey(name: 'tags')
-  final List<TagRM>? tags;
+  final List<String>? tags;
 
   static const fromJson = _$FollowersListPageRMFromJson;
 }

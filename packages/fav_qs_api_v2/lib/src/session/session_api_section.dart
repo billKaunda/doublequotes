@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-import 'package:fav_qs_api_v2/src/dio_extensions.dart';
+import 'package:fav_qs_api_v2/src/extensions.dart';
 import 'package:fav_qs_api_v2/src/fav_qs_api_v2_exceptions.dart';
 import 'package:fav_qs_api_v2/src/session/session_url_builder.dart';
 import 'package:fav_qs_api_v2/src/session/models/session_models.dart';
@@ -22,7 +22,7 @@ class SessionApiSection {
   final Dio _dio;
   final SessionUrlBuilder _sessionUrlBuilder;
 
-  Future<UserRM> signIn(String username, String password) async {
+  Future<UserSessionRM> signIn(String username, String password) async {
     final url = _sessionUrlBuilder.buildSignInUrl();
     final requestJsonBody = UserRequestRM(
         userCredentials: UserCredentialsRequestRM(
@@ -34,7 +34,7 @@ class SessionApiSection {
     final jsonObject = response.data;
 
     try {
-      final user = UserRM.fromJson(jsonObject);
+      final user = UserSessionRM.fromJson(jsonObject);
       return user;
     } catch (error) {
       final int errorCode = jsonObject[_errorCodeJsonKey];

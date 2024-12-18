@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fav_qs_api_v2/src/dio_extensions.dart';
+import 'package:fav_qs_api_v2/src/extensions.dart';
 import 'package:fav_qs_api_v2/src/fav_qs_api_v2_exceptions.dart';
 
 import './filters/filters_models.dart';

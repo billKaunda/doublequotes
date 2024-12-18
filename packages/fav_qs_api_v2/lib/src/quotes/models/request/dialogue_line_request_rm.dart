@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'dialogue_lines_request_rm.g.dart';
+part 'dialogue_line_request_rm.g.dart';
 
 @JsonSerializable(createFactory: false)
-class DialogueLinesRequestRM {
-  const DialogueLinesRequestRM({
+class DialogueLineRequestRM {
+  const DialogueLineRequestRM({
     required this.author,
     required this.body,
   });
@@ -15,5 +15,5 @@ class DialogueLinesRequestRM {
   @JsonKey(name: 'body')
   final String body;
 
-  Map<String, dynamic> toJson() => _$DialogueLinesRequestRMToJson(this);
+  Map<String, dynamic> toJson() => _$DialogueLineRequestRMToJson(this);
 }

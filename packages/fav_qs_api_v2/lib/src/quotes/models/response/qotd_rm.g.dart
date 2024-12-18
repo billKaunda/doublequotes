@@ -11,11 +11,11 @@ QotdRM _$QotdRMFromJson(Map<String, dynamic> json) => $checkedCreate(
       json,
       ($checkedConvert) {
         final val = QotdRM(
-          qotdDate: $checkedConvert('qotd_date', (v) => v as String),
+          date: $checkedConvert('qotd_date', (v) => v as String),
           quote: $checkedConvert(
               'quote', (v) => QuoteRM.fromJson(v as Map<String, dynamic>)),
         );
         return val;
       },
-      fieldKeyMap: const {'qotdDate': 'qotd_date'},
+      fieldKeyMap: const {'date': 'qotd_date'},
     );

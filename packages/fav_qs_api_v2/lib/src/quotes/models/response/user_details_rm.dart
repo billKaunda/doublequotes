@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'personal_tag_rm.dart';
 
 part 'user_details_rm.g.dart';
 
@@ -26,7 +25,7 @@ class UserDetailsRM {
   final bool? isHidden;
 
   @JsonKey(name: 'personal_tags')
-  final List<PersonalTagRM>? personalTags;
+  final List<String>? personalTags;
 
   static const fromJson = _$UserDetailsRMFromJson;
 }
