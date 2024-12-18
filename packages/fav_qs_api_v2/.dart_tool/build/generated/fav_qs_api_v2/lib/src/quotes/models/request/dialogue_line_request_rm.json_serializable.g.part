@@ -1,0 +1,10 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Map<String, dynamic> _$DialogueLineRequestRMToJson(
+        DialogueLineRequestRM instance) =>
+    <String, dynamic>{
+      'author': instance.author,
+      'body': instance.body,
+    };

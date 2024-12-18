@@ -1,8 +1,0 @@
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-Map<String, dynamic> _$TagRequestRMToJson(TagRequestRM instance) =>
-    <String, dynamic>{
-      'tag': instance.tag,
-    };

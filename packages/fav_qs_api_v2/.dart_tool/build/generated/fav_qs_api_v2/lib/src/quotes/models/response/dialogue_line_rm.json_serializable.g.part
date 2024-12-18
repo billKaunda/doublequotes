@@ -1,0 +1,16 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+DialogueLineRM _$DialogueLineRMFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      'DialogueLineRM',
+      json,
+      ($checkedConvert) {
+        final val = DialogueLineRM(
+          author: $checkedConvert('author', (v) => v as String),
+          body: $checkedConvert('body', (v) => v as String),
+        );
+        return val;
+      },
+    );

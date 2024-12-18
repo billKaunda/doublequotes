@@ -12,12 +12,8 @@ UserDetailsRM _$UserDetailsRMFromJson(Map<String, dynamic> json) =>
           isUpvoted: $checkedConvert('upvote', (v) => v as bool?),
           isDownvoted: $checkedConvert('downvote', (v) => v as bool?),
           isHidden: $checkedConvert('hidden', (v) => v as bool?),
-          personalTags: $checkedConvert(
-              'personal_tags',
-              (v) => (v as List<dynamic>?)
-                  ?.map(
-                      (e) => PersonalTagRM.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          personalTags: $checkedConvert('personal_tags',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
         );
         return val;
       },

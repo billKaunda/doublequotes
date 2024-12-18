@@ -12,11 +12,8 @@ QuoteRM _$QuoteRMFromJson(Map<String, dynamic> json) => $checkedCreate(
               'favorites_count', (v) => (v as num?)?.toInt() ?? 0),
           enableDialogue: $checkedConvert('dialogue', (v) => v as bool?),
           isFavorite: $checkedConvert('favorite', (v) => v as bool?),
-          tags: $checkedConvert(
-              'tags',
-              (v) => (v as List<dynamic>?)
-                  ?.map((e) => TagRM.fromJson(e as Map<String, dynamic>))
-                  .toList()),
+          tags: $checkedConvert('tags',
+              (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
           quoteUrl: $checkedConvert('url', (v) => v as String?),
           upvotesCount: $checkedConvert(
               'upvotes_count', (v) => (v as num?)?.toInt() ?? 0),
@@ -35,8 +32,8 @@ QuoteRM _$QuoteRMFromJson(Map<String, dynamic> json) => $checkedCreate(
           dialogueLines: $checkedConvert(
               'lines',
               (v) => (v as List<dynamic>?)
-                  ?.map((e) =>
-                      DialogueLinesRM.fromJson(e as Map<String, dynamic>))
+                  ?.map(
+                      (e) => DialogueLineRM.fromJson(e as Map<String, dynamic>))
                   .toList()),
           source: $checkedConvert('source', (v) => v as String?),
           context: $checkedConvert('context', (v) => v as String?),

@@ -1,0 +1,8 @@
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+Map<String, dynamic> _$PersonalTagsRMToJson(PersonalTagsRM instance) =>
+    <String, dynamic>{
+      'personal_tags': instance.personalTags,
+    };

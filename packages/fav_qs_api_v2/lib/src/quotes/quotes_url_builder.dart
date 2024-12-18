@@ -1,5 +1,3 @@
-import '../extensions.dart';
-
 class QuotesUrlBuilder {
   const QuotesUrlBuilder({
     String? baseUrl,
