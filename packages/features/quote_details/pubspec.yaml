@@ -20,6 +20,7 @@ dependencies:
   share_plus: ^10.1.2
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
+  lints: ^5.1.0
   
 
 dev_dependencies:
