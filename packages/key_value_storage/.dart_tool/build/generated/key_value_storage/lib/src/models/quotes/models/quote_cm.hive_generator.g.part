@@ -4,7 +4,7 @@
 
 class QuoteCMAdapter extends TypeAdapter<QuoteCM> {
   @override
-  final int typeId = 9;
+  final int typeId = 8;
 
   @override
   QuoteCM read(BinaryReader reader) {
@@ -26,7 +26,7 @@ class QuoteCMAdapter extends TypeAdapter<QuoteCM> {
       body: fields[10] as String?,
       isPrivate: fields[11] as bool?,
       userDetails: fields[12] as UserDetailsCM?,
-      dialogueLines: (fields[13] as List?)?.cast<DialogueLinesCM>(),
+      dialogueLines: (fields[13] as List?)?.cast<DialogueLineCM>(),
       source: fields[14] as String?,
       context: fields[15] as String?,
     );
