@@ -1,0 +1,1 @@
+{"version":2,"entries":[{"package":"domain_models","rootUri":"../../domain_models/","packageUri":"lib/"},{"package":"fav_qs_api_v2","rootUri":"../../fav_qs_api_v2/","packageUri":"lib/"},{"package":"key_value_storage","rootUri":"../../key_value_storage/","packageUri":"lib/"},{"package":"quote_repository","rootUri":"../","packageUri":"lib/"}]}
