@@ -1,0 +1,32 @@
+name: update_profile
+publish_to: none
+
+environment:
+  sdk: ^3.6.0-334.4.beta
+
+dependencies:
+  flutter:
+    sdk: flutter
+  component_library:
+    path: ../../component_library
+  user_repository:
+    path: ../../user_repository
+  domain_models:
+    path: ../../domain_models
+  form_fields:
+    path: ../../form_fields
+  meta: ^1.15.0
+  equatable: ^2.0.5
+  build_runner: ^2.4.13
+  flutter_bloc: ^8.1.6
+  flutter_svg: ^2.0.16
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  generate: true
+  uses-material-design: true
+  assets:
+    - assets/icons/
