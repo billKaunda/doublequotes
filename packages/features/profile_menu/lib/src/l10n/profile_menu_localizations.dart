@@ -101,17 +101,11 @@ abstract class ProfileMenuLocalizations {
   /// **'Sign In'**
   String get signInButtonLabel;
 
-  /// No description provided for @signInUserGreeting.
+  /// No description provided for @signedInUserGreeting.
   ///
   /// In en, this message translates to:
   /// **'Hi {username} '**
-  String signInUserGreeting(String username);
-
-  /// Label for the tile which a user can tap to update/modify his profile.
-  ///
-  /// In en, this message translates to:
-  /// **'Update Profile'**
-  String get updateProfileTileLabel;
+  String signedInUserGreeting(String username);
 
   /// Label for the sign out button that a user can tap to end his session in FavQs.com
   ///
@@ -131,144 +125,6 @@ abstract class ProfileMenuLocalizations {
   /// **'Sign Up'**
   String get signUpButtonLabel;
 
-  /// Label of the field for updating one's username
-  ///
-  /// In en, this message translates to:
-  /// **'Username'**
-  String get usernameLabel;
-
-  /// Error message shown when the username field has been left empty
-  ///
-  /// In en, this message translates to:
-  /// **'Your username can\'t be empty.'**
-  String get usernameTextFieldEmptyErrorMessage;
-
-  /// Error message displayed when the username has an invalid format
-  ///
-  /// In en, this message translates to:
-  /// **'Your username must be 1-20 characters long and can only contain letters, numbers, and the underscore (_).'**
-  String get usernameTextFieldInvalidErrorMessage;
-
-  /// Error message given when the username entered already exists in FavQs.com
-  ///
-  /// In en, this message translates to:
-  /// **'This username is already taken.'**
-  String get usernameTextFieldAlreadyTakenErrorMessage;
-
-  /// Label of the email field
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get emailLabel;
-
-  /// Error message shown when the email text field has been left empty.
-  ///
-  /// In en, this message translates to:
-  /// **'Your email can\'t be empty.'**
-  String get emailTextFieldEmptyErrorMessage;
-
-  /// Error message displayed when the email entered has an invalid format.
-  ///
-  /// In en, this message translates to:
-  /// **'This email is not valid.'**
-  String get emailTextFieldInvalidErrorMessage;
-
-  /// Error message given when the entered email already exists in FavQs.com
-  ///
-  /// In en, this message translates to:
-  /// **'This email is already registered.'**
-  String get emailTextFieldAlreadyRegisteredErrorMessage;
-
-  /// Label of the expansion tile that allows a user to start updating his password
-  ///
-  /// In en, this message translates to:
-  /// **'Update Password'**
-  String get updatePasswordTileLabel;
-
-  /// Label of the text field for inputing a new password.
-  ///
-  /// In en, this message translates to:
-  /// **'New Password'**
-  String get passwordLabel;
-
-  /// Error message displayed when the password entered doesn't meet the required validation standards.
-  ///
-  /// In en, this message translates to:
-  /// **'Password must be at least five characters long.'**
-  String get passwordTextFieldInvalidErrorMessage;
-
-  /// Label of the text field for confirming the new password entered.
-  ///
-  /// In en, this message translates to:
-  /// **'New Password Confirmation'**
-  String get passwordConfirmationLabel;
-
-  /// Error message displayed when the passwords don't match.
-  ///
-  /// In en, this message translates to:
-  /// **'Your passwords don\'t match.'**
-  String get passwordConfirmationTextFieldInvalidErrorMessage;
-
-  /// Label of the field for updating one's x username
-  ///
-  /// In en, this message translates to:
-  /// **'X Username'**
-  String get xUsernameLabel;
-
-  /// Error message shown when the x username field has been left empty
-  ///
-  /// In en, this message translates to:
-  /// **'Your X username can\'t be empty.'**
-  String get xUsernameTextFieldEmptyErrorMessage;
-
-  /// Error message displayed when the username has an invalid format
-  ///
-  /// In en, this message translates to:
-  /// **'Your X username must be 4-15 characters long and can only contain letters, numbers, underscore (_) and the (@) symbol.'**
-  String get xUsernameTextFieldInvalidErrorMessage;
-
-  /// Label of the field for updating one's facebook username
-  ///
-  /// In en, this message translates to:
-  /// **'Facebook Username'**
-  String get facebookUsernameLabel;
-
-  /// Error message shown when the facebook username field has been left empty
-  ///
-  /// In en, this message translates to:
-  /// **'Your facebook username can\'t be empty.'**
-  String get facebookUsernameTextFieldEmptyErrorMessage;
-
-  /// Error message displayed when the username has an invalid format
-  ///
-  /// In en, this message translates to:
-  /// **'Your facebook username must be 4-15 characters long and can only contain letters, numbers, underscore (_) and the (@) symbol.'**
-  String get facebookUsernameTextFieldInvalidErrorMessage;
-
-  /// Label of the tile that a user can use to enable/disable profane quotes
-  ///
-  /// In en, this message translates to:
-  /// **'Profanity Filter'**
-  String get profanityFilterTileLabel;
-
-  /// Subtitle for enabling profane quotes to be fetched
-  ///
-  /// In en, this message translates to:
-  /// **'Allow profane quotes to be displayed'**
-  String get enableProfanityFilterSubtitle;
-
-  /// Subtitle for disabling profane quotes
-  ///
-  /// In en, this message translates to:
-  /// **'Disable profane quotes from being displayed'**
-  String get disableProfanityFilterSubtitle;
-
-  /// Label for the elevated button which a user taps to update his profile
-  ///
-  /// In en, this message translates to:
-  /// **'Update Profile'**
-  String get updateProfileButtonLabel;
-
   /// Label of the number of followers for a given user.
   ///
   /// In en, this message translates to:
@@ -287,59 +143,119 @@ abstract class ProfileMenuLocalizations {
   /// **'Public Favorites'**
   String get publicFavoritesLabel;
 
-  /// Title of the ListTile for choosing to set profile picture from Facebook
+  /// Title of the tile which a user can tap to update/modify his profile.
   ///
   /// In en, this message translates to:
-  /// **'Facebook'**
-  String get facebookTitle;
+  /// **'Update Profile'**
+  String get updateProfileTitleLabel;
 
-  /// Subtitle for the ListTile to set profile picture from Facebook.
+  /// Subtitle for the list tile that allows a user to update his profile when tapped.
   ///
   /// In en, this message translates to:
-  /// **'Set profile picture from Facebook'**
-  String get setPicFromFacebookSubtitle;
+  /// **'Edit your profile'**
+  String get updateProfileSubtitleLabel;
 
-  /// Error message displayed when a user tries to update his profile pic to Facebook but the facebookUsername field is empty
+  /// Label for the tile which a user can tap to change theme settings for the app.
   ///
   /// In en, this message translates to:
-  /// **'Oops, you haven\'t set your facebook username yet. Please update it then try again'**
-  String get emptyFacebookUsernameErrorMessage;
+  /// **'Theme'**
+  String get themeSettingsTileLabel;
 
-  /// Title of the ListTile for choosing to set profile picture from Twitter-X
+  /// Label for the tile to select the app's default theme settings.
   ///
   /// In en, this message translates to:
-  /// **'X'**
-  String get xTitle;
+  /// **'Default'**
+  String get defaultThemeTileLabel;
 
-  /// Subtitle for the ListTile to set profile picture from X.
+  /// Label for the tile to select theme as determined from the user's wallpaper.
   ///
   /// In en, this message translates to:
-  /// **'Set profile picture from X'**
-  String get setPicFromXSubtitle;
+  /// **'Inspired by my wallpaper'**
+  String get themeFromMyWallpaperTileLabel;
 
-  /// Error message displayed when a user tries to update his profile pic to X but the xUsername field is empty.
+  /// Label of the list tile that allows a user to select his preffered language.
   ///
   /// In en, this message translates to:
-  /// **'Oops, you haven\'t set your X username yet. Please update it then try again'**
-  String get emptyXUsernameErrorMessage;
+  /// **'Language'**
+  String get languageListTileLabel;
 
-  /// Title of the ListTile for choosing to set profile picture from email Gravater
+  /// Title of the simple dialog box that allows a user to choose his preferred language.
   ///
   /// In en, this message translates to:
-  /// **'Email Gravater'**
-  String get emailGravaterTitle;
+  /// **'Language'**
+  String get languagePrefSimpleDialogTitle;
 
-  /// Subtitle for the ListTile to set profile picture from Email Gravater.
+  /// Label of the tile to select English language.
   ///
   /// In en, this message translates to:
-  /// **'Set profile picture from Email Gravater'**
-  String get setPicFromEmailSubtitle;
+  /// **'English'**
+  String get englishOptionTileLabel;
 
-  /// Error message displayed when a user tries to update his profile pic to Email Gravater but his email field is empty.
+  /// Label of the tile to select Swahili language.
   ///
   /// In en, this message translates to:
-  /// **'Oops, you haven\'t set Email Gravater yet. Please update it then try again'**
-  String get emptyEmailGravaterErrorMessage;
+  /// **'Swahili'**
+  String get swahiliOptionTileLabel;
+
+  /// Label of the list tile that allows a user to select his preffered dark mode settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode Preference'**
+  String get darkModePreferencesListTileLabel;
+
+  /// Title of the simple dialog box that allows a user to choose his dark mode preference.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode Preference'**
+  String get darkModePrefSimpleDialogTitle;
+
+  /// Label for the high contrast dark mode preference
+  ///
+  /// In en, this message translates to:
+  /// **'High Contrast Dark'**
+  String get highContrastDarkOptionLabel;
+
+  /// Label for dark mode preference tile
+  ///
+  /// In en, this message translates to:
+  /// **'Dark'**
+  String get darkOptionTileLabel;
+
+  /// Label for light mode preference tile
+  ///
+  /// In en, this message translates to:
+  /// **'Light'**
+  String get lightOptionTileLabel;
+
+  /// Label for high contrast light mode preference tile
+  ///
+  /// In en, this message translates to:
+  /// **'High Contrast Light'**
+  String get highContrastLightOptionTileLabel;
+
+  /// Label for setting the dark mode preference according to the system settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Use System Settings'**
+  String get useSystemSettingsOptionTileLabel;
+
+  /// Label for the tile a user can tap to select his preferred language of choice.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get languageTileLabel;
+
+  /// Label for English language choice
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get englishLanguageOptionLabel;
+
+  /// Label for Swahili language choice
+  ///
+  /// In en, this message translates to:
+  /// **'Kiswahili'**
+  String get swahiliLanguageOptionLabel;
 }
 
 class _ProfileMenuLocalizationsDelegate extends LocalizationsDelegate<ProfileMenuLocalizations> {

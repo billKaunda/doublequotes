@@ -17,9 +17,6 @@ dependencies:
     path: ../../quote_repository
   activity_repository:
     path: ../../activity_repository
-  form_fields:
-    path: ../../form_fields
-  flutter_svg: ^2.0.16
   flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   rxdart: ^0.27.7
@@ -28,8 +25,5 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
 flutter:
   uses-material-design: true
-  assets:
-    - assets/

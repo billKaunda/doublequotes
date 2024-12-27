@@ -4,17 +4,13 @@
     "@signInButtonLabel":{
         "description": "Label for the sign in button which a user taps to sign into the app."
     },
-    "signInUserGreeting" : "Hi {username} ",
-    "@signInUserGreeting" : {
+    "signedInUserGreeting" : "Hi {username} ",
+    "@signedInUserGreeting" : {
         "placeholders" : {
             "username" : {
                 "type" : "String"
             }
         }
-    },
-    "updateProfileTileLabel" : "Update Profile",
-    "@updateProfileTileLabel":{
-        "description": "Label for the tile which a user can tap to update/modify his profile."
     },
     "signOutButtonLabel" : "Sign Out",
     "@signOutButtonLabel":{
@@ -28,98 +24,6 @@
     "@signUpButtonLabel":{
         "description": "Label for the sign up button that a visitor can tap to open an account in FavQs.com"
     },
-    "usernameLabel": "Username",
-    "@usernameLabel":{
-        "description": "Label of the field for updating one's username"
-    },
-    "usernameTextFieldEmptyErrorMessage": "Your username can't be empty.",
-    "@usernameTextFieldEmptyErrorMessage":{
-        "description": "Error message shown when the username field has been left empty"
-    },
-    "usernameTextFieldInvalidErrorMessage": "Your username must be 1-20 characters long and can only contain letters, numbers, and the underscore (_).",
-    "@usernameTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the username has an invalid format"
-    },
-    "usernameTextFieldAlreadyTakenErrorMessage": "This username is already taken.",
-    "@usernameTextFieldAlreadyTakenErrorMessage":{
-        "description": "Error message given when the username entered already exists in FavQs.com"
-    },
-    "emailLabel": "Email",
-    "@emailLabel":{
-        "description": "Label of the email field"
-    },
-    "emailTextFieldEmptyErrorMessage": "Your email can't be empty.",
-    "@emailTextFieldEmptyErrorMessage":{
-        "description": "Error message shown when the email text field has been left empty."
-    },
-    "emailTextFieldInvalidErrorMessage": "This email is not valid.",
-    "@emailTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the email entered has an invalid format."
-    },
-    "emailTextFieldAlreadyRegisteredErrorMessage": "This email is already registered.",
-    "@emailTextFieldAlreadyRegisteredErrorMessage":{
-        "description": "Error message given when the entered email already exists in FavQs.com "
-    },
-    "updatePasswordTileLabel": "Update Password",
-    "@updatePasswordTileLabel":{
-        "description": "Label of the expansion tile that allows a user to start updating his password"
-    },
-    "passwordLabel": "New Password",
-    "@passwordLabel":{
-        "description": "Label of the text field for inputing a new password."
-    },
-    "passwordTextFieldInvalidErrorMessage": "Password must be at least five characters long.",
-    "@passwordTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the password entered doesn't meet the required validation standards."
-    },
-    "passwordConfirmationLabel": "New Password Confirmation",
-    "@passwordConfirmationLabel":{
-        "description": "Label of the text field for confirming the new password entered."
-    },
-    "passwordConfirmationTextFieldInvalidErrorMessage": "Your passwords don't match.",
-    "@passwordConfirmationTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the passwords don't match."
-    },
-    "xUsernameLabel": "X Username",
-    "@xUsernameLabel":{
-        "description": "Label of the field for updating one's x username"
-    },
-    "xUsernameTextFieldEmptyErrorMessage": "Your X username can't be empty.",
-    "@xUsernameTextFieldEmptyErrorMessage":{
-        "description": "Error message shown when the x username field has been left empty"
-    },
-    "xUsernameTextFieldInvalidErrorMessage": "Your X username must be 4-15 characters long and can only contain letters, numbers, underscore (_) and the (@) symbol.",
-    "@xUsernameTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the username has an invalid format"
-    },
-    "facebookUsernameLabel": "Facebook Username",
-    "@facebookUsernameLabel":{
-        "description": "Label of the field for updating one's facebook username"
-    },
-    "facebookUsernameTextFieldEmptyErrorMessage": "Your facebook username can't be empty.",
-    "@facebookUsernameTextFieldEmptyErrorMessage":{
-        "description": "Error message shown when the facebook username field has been left empty"
-    },
-    "facebookUsernameTextFieldInvalidErrorMessage": "Your facebook username must be 4-15 characters long and can only contain letters, numbers, underscore (_) and the (@) symbol.",
-    "@facebookUsernameTextFieldInvalidErrorMessage":{
-        "description": "Error message displayed when the username has an invalid format"
-    },
-    "profanityFilterTileLabel": "Profanity Filter",
-    "@profanityFilterTileLabel":{
-        "description": "Label of the tile that a user can use to enable/disable profane quotes"
-    },
-    "enableProfanityFilterSubtitle": "Allow profane quotes to be displayed",
-    "@enableProfanityFilterSubtitle":{
-        "description": "Subtitle for enabling profane quotes to be fetched"
-    },
-    "disableProfanityFilterSubtitle": "Disable profane quotes from being displayed",
-    "@disableProfanityFilterSubtitle":{
-        "description": "Subtitle for disabling profane quotes"
-    },
-    "updateProfileButtonLabel": "Update Profile",
-    "@updateProfileButtonLabel":{
-        "description": "Label for the elevated button which a user taps to update his profile"
-    },
     "followersLabel": "Followers",
     "@followersLabel":{
         "description": "Label of the number of followers for a given user."
@@ -132,41 +36,80 @@
     "@publicFavoritesLabel":{
         "description": "Label of the public quotes that have been favorited by this user."
     },
-    "facebookTitle": "Facebook",
-    "@facebookTitle":{
-        "description": "Title of the ListTile for choosing to set profile picture from Facebook"
+    "updateProfileTitleLabel" : "Update Profile",
+    "@updateProfileTitleLabel":{
+        "description": "Title of the tile which a user can tap to update/modify his profile."
     },
-    "setPicFromFacebookSubtitle": "Set profile picture from Facebook",
-    "@setPicFromFacebookSubtitle":{
-        "description": "Subtitle for the ListTile to set profile picture from Facebook."
+    "updateProfileSubtitleLabel": "Edit your profile",
+    "@updateProfileSubtitleLabel":{
+        "description": "Subtitle for the list tile that allows a user to update his profile when tapped."
     },
-    "emptyFacebookUsernameErrorMessage": "Oops, you haven't set your facebook username yet. Please update it then try again",
-    "@emptyFacebookUsernameErrorMessage":{
-        "description": "Error message displayed when a user tries to update his profile pic to Facebook but the facebookUsername field is empty"
+    "themeSettingsTileLabel" : "Theme",
+    "@themeSettingsTileLabel":{
+        "description": "Label for the tile which a user can tap to change theme settings for the app."
     },
-    "xTitle": "X",
-    "@xTitle":{
-        "description": "Title of the ListTile for choosing to set profile picture from Twitter-X"
+    "defaultThemeTileLabel": "Default",
+    "@defaultThemeTileLabel":{
+        "description": "Label for the tile to select the app's default theme settings."
     },
-    "setPicFromXSubtitle": "Set profile picture from X",
-    "@setPicFromXSubtitle":{
-        "description": "Subtitle for the ListTile to set profile picture from X."
+    "themeFromMyWallpaperTileLabel": "Inspired by my wallpaper",
+    "@themeFromMyWallpaperTileLabel":{
+        "description": "Label for the tile to select theme as determined from the user's wallpaper."
     },
-    "emptyXUsernameErrorMessage": "Oops, you haven't set your X username yet. Please update it then try again",
-    "@emptyXUsernameErrorMessage":{
-        "description": "Error message displayed when a user tries to update his profile pic to X but the xUsername field is empty."
+    "languageListTileLabel": "Language",
+    "@languageListTileLabel":{
+        "description": "Label of the list tile that allows a user to select his preffered language."
     },
-    "emailGravaterTitle": "Email Gravater",
-    "@emailGravaterTitle":{
-        "description": "Title of the ListTile for choosing to set profile picture from email Gravater"
+    "languagePrefSimpleDialogTitle": "Language",
+    "@languagePrefSimpleDialogTitle":{
+        "description": "Title of the simple dialog box that allows a user to choose his preferred language."
     },
-    "setPicFromEmailSubtitle": "Set profile picture from Email Gravater",
-    "@setPicFromEmailSubtitle":{
-        "description": "Subtitle for the ListTile to set profile picture from Email Gravater."
+    "englishOptionTileLabel": "English",
+    "@englishOptionTileLabel":{
+        "description": "Label of the tile to select English language."
     },
-    "emptyEmailGravaterErrorMessage": "Oops, you haven't set Email Gravater yet. Please update it then try again",
-    "@emptyEmailGravaterErrorMessage":{
-        "description": "Error message displayed when a user tries to update his profile pic to Email Gravater but his email field is empty."
+    "swahiliOptionTileLabel": "Swahili",
+    "@swahiliOptionTileLabel":{
+        "description": "Label of the tile to select Swahili language."
+    },
+    "darkModePreferencesListTileLabel": "Dark Mode Preference",
+    "@darkModePreferencesListTileLabel":{
+        "description": "Label of the list tile that allows a user to select his preffered dark mode settings."
+    },
+    "darkModePrefSimpleDialogTitle": "Dark Mode Preference",
+    "@darkModePrefSimpleDialogTitle":{
+        "description": "Title of the simple dialog box that allows a user to choose his dark mode preference."
+    },
+    "highContrastDarkOptionLabel": "High Contrast Dark",
+    "@highContrastDarkOptionLabel": {
+        "description": "Label for the high contrast dark mode preference"
+    },
+    "darkOptionTileLabel" : "Dark",
+    "@darkOptionTileLabel":{
+        "description": "Label for dark mode preference tile"
+    },
+    "lightOptionTileLabel" : "Light",
+    "@lightOptionTileLabel":{
+        "description": "Label for light mode preference tile"
+    },
+    "highContrastLightOptionTileLabel": "High Contrast Light",
+    "@highContrastLightOptionTileLabel":{
+        "description": "Label for high contrast light mode preference tile"
+    },
+    "useSystemSettingsOptionTileLabel" : "Use System Settings",
+    "@useSystemSettingsOptionTileLabel":{
+        "description": "Label for setting the dark mode preference according to the system settings."
+    },
+    "languageTileLabel": "Language",
+    "@languageTileLabel":{
+        "description": "Label for the tile a user can tap to select his preferred language of choice."
+    },
+    "englishLanguageOptionLabel": "English",
+    "@englishLanguageOptionLabel":{
+        "description": "Label for English language choice"
+    },
+    "swahiliLanguageOptionLabel": "Kiswahili",
+    "@swahiliLanguageOptionLabel":{
+        "description": "Label for Swahili language choice"
     }
-
 }

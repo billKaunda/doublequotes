@@ -866,6 +866,12 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "update_profile",
+      "rootUri": "../../update_profile",
+      "packageUri": "lib/",
+      "languageVersion": "3.6"
+    },
+    {
       "name": "url_launcher_linux",
       "rootUri": "file:///home/bill/.pub-cache/hosted/pub.dev/url_launcher_linux-3.2.1",
       "packageUri": "lib/",
@@ -986,7 +992,7 @@
       "languageVersion": "3.6"
     }
   ],
-  "generated": "2024-12-18T12:03:49.726289Z",
+  "generated": "2024-12-26T10:47:33.096661Z",
   "generator": "pub",
   "generatorVersion": "3.6.0-334.4.beta",
   "flutterRoot": "file:///home/bill/snap/flutter/common/flutter",

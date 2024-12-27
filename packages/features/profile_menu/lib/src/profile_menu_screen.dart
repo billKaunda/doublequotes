@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:component_library/component_library.dart';
 import 'package:quote_repository/quote_repository.dart';
 import 'package:activity_repository/activity_repository.dart';
+import 'package:domain_models/domain_models.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:form_fields/form_fields.dart';
 
 import 'profile_menu_bloc.dart';
 import '../profile_menu.dart';
 
-part './view_update_profile_menu.dart';
+part 'dark_mode_preference_picker.dart';
+part 'language_preference_picker.dart';
+part 'theme_source_preference_picker.dart';
 
 const double picDimension = 250;
 const double picEditIconSize = 16;
-const double modalBottomSheetTopRadius = 16;
 
 class ProfileMenuScreen extends StatelessWidget {
   const ProfileMenuScreen({
@@ -26,6 +26,7 @@ class ProfileMenuScreen extends StatelessWidget {
     this.onFollowersTap,
     this.onFollowingTap,
     this.onPublicFavoritesTap,
+    this.onUpdateProfileTap,
     super.key,
   });
 
@@ -37,6 +38,7 @@ class ProfileMenuScreen extends StatelessWidget {
   final VoidCallback? onFollowersTap;
   final VoidCallback? onFollowingTap;
   final VoidCallback? onPublicFavoritesTap;
+  final VoidCallback? onUpdateProfileTap;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,7 @@ class ProfileMenuScreen extends StatelessWidget {
         onFollowersTap: onFollowersTap,
         onFollowingTap: onFollowingTap,
         onPublicFavoritesTap: onPublicFavoritesTap,
+        onUpdateProfileTap: onUpdateProfileTap,
       ),
     );
   }
@@ -65,6 +68,8 @@ class ProfileMenuView extends StatelessWidget {
     this.onFollowersTap,
     this.onFollowingTap,
     this.onPublicFavoritesTap,
+    this.onUpdateProfileTap,
+    this.onSettingsMenuTap,
     super.key,
   });
 
@@ -73,22 +78,34 @@ class ProfileMenuView extends StatelessWidget {
   final VoidCallback? onFollowersTap;
   final VoidCallback? onFollowingTap;
   final VoidCallback? onPublicFavoritesTap;
+  final VoidCallback? onUpdateProfileTap;
+  final VoidCallback? onSettingsMenuTap;
+
   @override
   Widget build(BuildContext context) {
     final l10n = ProfileMenuLocalizations.of(context);
+    final bloc = context.read<ProfileMenuBloc>();
+    final screenMargin =
+        (WallpaperDoubleQuotesTheme.maybeOf(context)?.screenMargin ??
+                DefaultDoubleQuotesTheme.maybeOf(context)?.screenMargin) ??
+            Spacing.medium;
+
     return StyledStatusBar.dark(
       child: Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: BlocBuilder<ProfileMenuBloc, ProfileMenuState>(
-              builder: (context, state) {
-                if (state is ProfileMenuLoaded) {
-                  final username = state.username;
-                  final picUrl = state.picUrl;
-                  return Column(
+          child: BlocBuilder<ProfileMenuBloc, ProfileMenuState>(
+            builder: (context, state) {
+              if (state is ProfileMenuLoaded) {
+                final username = state.username;
+                final picUrl = state.picUrl;
+                return SingleChildScrollView(
+                  child: Column(
                     children: [
                       if (!state.isUserAuthenticated) ...[
                         SignInButton(
+                          bloc: (context) => bloc.add(
+                            const ProfileMenuStarted(),
+                          ),
                           onSignInTap: onSignInTap,
                         ),
                         const SizedBox(
@@ -127,11 +144,7 @@ class ProfileMenuView extends StatelessWidget {
                                 right: 0,
                                 bottom: 0,
                                 child: EditPicSourceButton(
-                                  onPressed: () => _showPicEditOptions(
-                                    context,
-                                    state,
-                                    l10n,
-                                  ),
+                                  onPressed: () => onUpdateProfileTap,
                                   iconSize: picEditIconSize,
                                 ),
                               ),
@@ -151,7 +164,7 @@ class ProfileMenuView extends StatelessWidget {
                                     .topRight, // Position the badge at the top-right corner
                                 children: [
                                   ShrinkableText(
-                                    l10n.signInUserGreeting(username.value),
+                                    l10n.signedInUserGreeting(username),
                                     style: const TextStyle(fontSize: 36),
                                   ),
                                   if (state
@@ -174,7 +187,6 @@ class ProfileMenuView extends StatelessWidget {
                           ),
                         ),
                       ],
-                      //TODO Display the account details if you request the user of the current user session
                       const Divider(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -199,11 +211,74 @@ class ProfileMenuView extends StatelessWidget {
                           ),
                         ],
                       ),
+                      //TODO Display the account details if you request the user of the current user session
                       const SizedBox(
                         height: Spacing.medium,
                       ),
-                      const ViewUpdateProfileMenu(),
-                      const Divider(),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: screenMargin,
+                          ),
+                          child: Column(
+                            children: [
+                              //Update Profile
+                              CustomListTile(
+                                leading: const Icon(
+                                  Icons.person_2,
+                                ),
+                                title: l10n.updateProfileTitleLabel,
+                                titleFontSize: FontSize.small,
+                                titleFontWeight: FontWeight.bold,
+                                subtitle: l10n.updateProfileSubtitleLabel,
+                                subtitleFontSize: FontSize.medium,
+                                onTap: onUpdateProfileTap,
+                                dense: false,
+                              ),
+                              const SizedBox(
+                                height: Spacing.medium,
+                              ),
+                              //Default & Wallpaper theming options
+                    CustomExpansionTile(
+                      title: l10n.themeSettingsTileLabel,
+                      subtitle: state.themeSourcePreference.toTitleCase(),
+                      children: [
+                        Builder(
+                          builder: (context) => ThemeSourcePreferencePicker(
+                            currentValue: state.themeSourcePreference,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: Spacing.mediumLarge,
+                    ),
+                    //Dark Mode Preference
+                    ChevronListTile(
+                      title: l10n.darkModePreferencesListTileLabel,
+                      subtitle: state.darkModePreference.toTitleCase(),
+                      onTap: () => DarkModePreferencePicker(
+                        currentValue: state.darkModePreference,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: Spacing.mediumLarge,
+                    ),
+                    //Language
+                    ChevronListTile(
+                      title: l10n.languageListTileLabel,
+                      subtitle: state.languagePreference.toTitleCase(),
+                      onTap: () => LanguagePreferencePicker(
+                        currentValue: state.languagePreference,
+                      ),
+                      leading: const Icon(
+                        Icons.language_rounded,
+                      ),
+                    ),
+                            ],
+                          ),
+                        ),
+                      ),
                       const SizedBox(
                         height: Spacing.mediumLarge,
                       ),
@@ -226,188 +301,43 @@ class ProfileMenuView extends StatelessWidget {
                         ),
                       ],
                     ],
-                  );
-                } else {
-                  return const CenteredCircularProgressIndicator();
-                }
-              },
-            ),
+                  ),
+                );
+              } else {
+                return const CenteredCircularProgressIndicator();
+              }
+            },
           ),
         ),
       ),
     );
   }
+}
 
-  void _showPicEditOptions(
-    BuildContext context,
-    ProfileMenuState state,
-    ProfileMenuLocalizations l10n,
-  ) {
-    final bloc = context.read<ProfileMenuBloc>();
-    final wallpaperTheme = WallpaperDoubleQuotesTheme.maybeOf(context);
-    final defaultTheme = DefaultDoubleQuotesTheme.maybeOf(context);
+extension on DarkModePreference {
+  String toTitleCase() {
+    //Convert enum name to a string and split by camel case
+    final words = name.split(RegExp(r'(?=[A-Z])'));
 
-    Widget showThemeError(BuildContext context) {
-      return const ExceptionIndicator(
-        title: 'Theme Error',
-        message: 'Error loading theme for showModalBottomSheet',
-      );
-    }
+    //convert each word to lowercase and capitalize the first letter
+    final titleCased = words
+        .map((word) => word.isNotEmpty
+            ? word[0].toUpperCase() + word.substring(1).toLowerCase()
+            : word)
+        .join(' ');
 
-    if (wallpaperTheme != null) {
-      wallpaperTheme.themeData.then(
-        (theme) {
-          buildShowModalBottomSheet(context, theme, l10n, state, bloc);
-        },
-        onError: (_) {
-          showThemeError(context);
-        },
-      );
-    } else if (defaultTheme != null) {
-      buildShowModalBottomSheet(
-        context,
-        defaultTheme.materialThemeData,
-        l10n,
-        state,
-        bloc,
-      );
-    } else {
-      showThemeError(context);
-    }
+    return titleCased;
   }
+}
 
-  Future<dynamic> buildShowModalBottomSheet(
-    BuildContext context,
-    ThemeData theme,
-    ProfileMenuLocalizations l10n,
-    ProfileMenuState state,
-    ProfileMenuBloc bloc,
-  ) {
-    return showModalBottomSheet(
-      context: context,
-      backgroundColor: theme.colorScheme.surfaceContainerHigh,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(modalBottomSheetTopRadius),
-        ),
-      ),
-      sheetAnimationStyle: AnimationStyle(
-        duration: const Duration(seconds: 2),
-        reverseDuration: const Duration(seconds: 1),
-      ),
-      builder: (context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ...ListTile.divideTiles(
-              context: context,
-              tiles: [
-                CustomListTile(
-                  leading: SvgPicture.asset(
-                    'assets/icons/facebook.svg',
-                  ),
-                  title: l10n.facebookTitle,
-                  subtitle: l10n.setPicFromFacebookSubtitle,
-                  onTap: () {
-                    Navigator.of(context).pop;
-                    if (state is ProfileMenuLoaded) {
-                      if (state.facebookUsername == null) {
-                        ScaffoldMessenger.of(context)
-                          ..hideCurrentSnackBar()
-                          ..showSnackBar(
-                            CustomSnackBar(
-                              content: l10n.emptyFacebookUsernameErrorMessage,
-                            ) as SnackBar,
-                          );
-                      } else {
-                        bloc.add(
-                          const ProfileMenuUpdatePic(Pic.facebook),
-                        );
-                      }
-                    } else {
-                      return;
-                    }
-                  },
-                ),
-                //Twitter X
-                CustomListTile(
-                  leading: SvgPicture.asset(
-                    'assets/icons/twitter-x.svg',
-                  ),
-                  title: l10n.xTitle,
-                  subtitle: l10n.setPicFromXSubtitle,
-                  onTap: () {
-                    Navigator.of(context).pop;
-                    if (state is ProfileMenuLoaded) {
-                      if (state.xUsername == null) {
-                        ScaffoldMessenger.of(context)
-                          ..hideCurrentSnackBar()
-                          ..showSnackBar(
-                            CustomSnackBar(
-                              content: l10n.emptyXUsernameErrorMessage,
-                            ) as SnackBar,
-                          );
-                      } else {
-                        bloc.add(
-                          const ProfileMenuUpdatePic(Pic.twitter),
-                        );
-                      }
-                    } else {
-                      return;
-                    }
-                  },
-                ),
-                //Email
-                CustomListTile(
-                  leading: const Icon(Icons.email),
-                  title: l10n.emailGravaterTitle,
-                  subtitle: l10n.setPicFromEmailSubtitle,
-                  onTap: () {
-                    Navigator.of(context).pop;
-                    if (state is ProfileMenuLoaded) {
-                      if (state.email == null) {
-                        ScaffoldMessenger.of(context)
-                          ..hideCurrentSnackBar()
-                          ..showSnackBar(
-                            SnackBar(
-                              backgroundColor: theme.colorScheme.errorContainer,
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0,
-                              ),
-                              content: Text(
-                                l10n.emptyEmailGravaterErrorMessage,
-                                style: TextStyle(
-                                  color: theme.colorScheme.onErrorContainer,
-                                  fontSize: FontSize.medium,
-                                ),
-                              ),
-                              duration: const Duration(seconds: 3),
-                              shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: Radius.circular(
-                                    snackBarTopRadius,
-                                  ),
-                                ),
-                              ),
-                              behavior: SnackBarBehavior.floating,
-                              elevation: 4,
-                            ),
-                          );
-                      } else {
-                        bloc.add(
-                          const ProfileMenuUpdatePic(Pic.gravater),
-                        );
-                      }
-                    } else {
-                      return;
-                    }
-                  },
-                ),
-              ],
-            ),
-          ],
-        );
-      },
-    );
+extension on LanguagePreference {
+  String toTitleCase() {
+    return name[0].toUpperCase() + name.substring(1).toLowerCase();
+  }
+}
+
+extension on ThemeSourcePreference {
+  String toTitleCase() {
+    return name[0].toUpperCase() + name.substring(1).toLowerCase();
   }
 }

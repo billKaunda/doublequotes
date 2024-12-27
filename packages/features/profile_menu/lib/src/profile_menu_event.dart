@@ -11,136 +11,45 @@ class ProfileMenuStarted extends ProfileMenuEvent {
   const ProfileMenuStarted();
 }
 
-class ProfileMenuIsEditingProfile extends ProfileMenuEvent {
-  const ProfileMenuIsEditingProfile();
+class ProfileMenuUsernameObtained extends ProfileMenuEvent {
+  const ProfileMenuUsernameObtained();
 }
 
-class ProfileMenuUsernameChanged extends ProfileMenuEvent {
-  const ProfileMenuUsernameChanged(
-    this.username,
+class ProfileMenuThemeSourcePrefChanged extends ProfileMenuEvent {
+  const ProfileMenuThemeSourcePrefChanged(
+    this.themeSourcePreference,
   );
 
-  final String username;
+  final ThemeSourcePreference themeSourcePreference;
 
   @override
   List<Object?> get props => [
-        username,
+        themeSourcePreference,
       ];
 }
 
-class ProfileMenuUsernameUnfocused extends ProfileMenuEvent {
-  const ProfileMenuUsernameUnfocused();
-}
-
-class ProfileMenuEmailChanged extends ProfileMenuEvent {
-  const ProfileMenuEmailChanged(
-    this.email,
+class ProfileMenuDarkModePrefChanged extends ProfileMenuEvent {
+  const ProfileMenuDarkModePrefChanged(
+    this.darkModePreference,
   );
 
-  final String email;
+  final DarkModePreference darkModePreference;
 
   @override
   List<Object?> get props => [
-        email,
+        darkModePreference,
       ];
 }
 
-class ProfileMenuEmailUnfocused extends ProfileMenuEvent {
-  const ProfileMenuEmailUnfocused();
-}
+class ProfileMenuLanguagePrefChanged extends ProfileMenuEvent {
+  const ProfileMenuLanguagePrefChanged(this.languagePreference);
 
-class ProfileMenuPasswordChanged extends ProfileMenuEvent {
-  const ProfileMenuPasswordChanged(
-    this.password,
-  );
-
-  final String password;
+  final LanguagePreference languagePreference;
 
   @override
   List<Object?> get props => [
-        password,
+        languagePreference,
       ];
-}
-
-class ProfileMenuPasswordUnfocused extends ProfileMenuEvent {
-  const ProfileMenuPasswordUnfocused();
-}
-
-class ProfileMenuPasswordConfirmationChanged extends ProfileMenuEvent {
-  const ProfileMenuPasswordConfirmationChanged(
-    this.passwordConfirmation,
-  );
-
-  final String passwordConfirmation;
-
-  @override
-  List<Object?> get props => [
-        passwordConfirmation,
-      ];
-}
-
-class ProfileMenuPasswordConfirmationUnfocused extends ProfileMenuEvent {
-  const ProfileMenuPasswordConfirmationUnfocused();
-}
-
-class ProfileMenuXUsernameChanged extends ProfileMenuEvent {
-  const ProfileMenuXUsernameChanged(
-    this.xUsername,
-  );
-
-  final String xUsername;
-
-  @override
-  List<Object?> get props => [
-        xUsername,
-      ];
-}
-
-class ProfileMenuXUsernameUnfocused extends ProfileMenuEvent {
-  const ProfileMenuXUsernameUnfocused();
-}
-
-class ProfileMenuFacebookUsernameChanged extends ProfileMenuEvent {
-  const ProfileMenuFacebookUsernameChanged(
-    this.facebookUsername,
-  );
-
-  final String facebookUsername;
-
-  @override
-  List<Object?> get props => [
-        facebookUsername,
-      ];
-}
-
-class ProfileMenuFacebookUsernameUnfocused extends ProfileMenuEvent {
-  const ProfileMenuFacebookUsernameUnfocused();
-}
-
-class ProfileMenuUpdatePic extends ProfileMenuEvent {
-  const ProfileMenuUpdatePic(this.pic);
-
-  final Pic pic;
-
-  @override
-  List<Object?> get props => [
-        pic,
-      ];
-}
-
-class ProfileMenuProfanityFilterToggled extends ProfileMenuEvent {
-  const ProfileMenuProfanityFilterToggled(this.profanityFilter);
-
-  final bool profanityFilter;
-
-  @override
-  List<Object?> get props => [
-        profanityFilter,
-      ];
-}
-
-class ProfileMenuOnSubmit extends ProfileMenuEvent {
-  const ProfileMenuOnSubmit();
 }
 
 class ProfileMenuSignedOut extends ProfileMenuEvent {
